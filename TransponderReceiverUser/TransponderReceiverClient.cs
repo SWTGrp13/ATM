@@ -21,7 +21,7 @@ namespace TransponderReceiverUser
             // Just display data
             foreach (var data in e.TransponderData)
             {
-                System.Console.WriteLine($"Transponderdata {data}");    
+                System.Console.WriteLine($" {data}");    
             }
         }
     }
