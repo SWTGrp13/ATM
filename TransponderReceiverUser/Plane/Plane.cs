@@ -1,18 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TransponderReceiverUser.Mediator;
 
-namespace TransponderReceiverUser.Plane
+namespace TransponderReceiverUser.PlaneParticipant
 {
-    public interface IPlane : IParticipant
+    public class Plane : IPlane
     {
-        string Tag { get; set; }
-        int XPos { get; set; }
-        int YPos { get; set; }
-        int Altitude { get; set; }
-        DateTime TimeStamp { get; set; }
+        private IMediator _Mediator = null;
+
+        string IPlane.Tag { get; set; }
+        int IPlane.XPos { get; set; }
+        int IPlane.YPos { get; set; }
+        int IPlane.Altitude { get; set; }
+        DateTime IPlane.TimeStamp { get; set; }
+
+        public void SetMoitor(IMediator mediator)
+        {
+            _Mediator = mediator;
+        }
+
+        void IParticipant.SendMessage(string message)
+        {
+            _Mediator?.SingleMessage(message, this);
+        }
     }
+  
 }

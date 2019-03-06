@@ -11,5 +11,6 @@ namespace TransponderReceiverUser.Mediator
     {
         void AddParticipant(IParticipant participant);
         void BroadcastMessage(string message, IParticipant sender);
+        void SingleMessage(string message, IParticipant sender);
     }
 }
