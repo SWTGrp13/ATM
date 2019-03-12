@@ -19,15 +19,41 @@ namespace TransponderReceiverUser
             this.receiver.TransponderDataReady += ReceiverOnTransponderDataReady;
         }
 
+        public bool isInvalidSpace(Plane sub)
+        {
+            if ((int)sub.XPos < 0 || (int)sub.XPos > 80000)
+            {
+                return false;
+            }
+            if ((int)sub.YPos < 0 || (int)sub.YPos > 80000)
+            {
+                return false;
+            }
+            if ((int)sub.Altitude <= 500 || (int)sub.YPos >= 20000)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
             // Just display data
             foreach (var data in e.TransponderData)
             {
                 var plane = Factory.CreatePlane(data);
-                if (!ATM.attach(plane))
+                if (isInvalidSpace(plane))
                 {
-                    ATM.getInstance(plane.Tag).Update(data);
+                    if (!ATM.attach(plane))
+                    {
+                        plane = ATM.getInstance(plane.Tag) as Plane;
+                        plane.Update(data);
+                        if (!isInvalidSpace(plane))
+                        {
+                            ATM.detach(plane);
+                        }
+                    }
                 }
             }
             Console.Clear();
