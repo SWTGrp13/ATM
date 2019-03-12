@@ -5,7 +5,6 @@ namespace TransponderReceiverUser
     public class TransponderReceiverClient
     {
         private ITransponderReceiver receiver;
-
         // Using constructor injection for dependency/ies
         public TransponderReceiverClient(ITransponderReceiver receiver)
         {

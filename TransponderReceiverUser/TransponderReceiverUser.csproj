@@ -49,6 +49,7 @@
     <Compile Include="Plane\IPlane.cs" />
     <Compile Include="Plane\Plane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Subject\Subject.cs" />
     <Compile Include="TransponderReceiverClient.cs" />
   </ItemGroup>
   <ItemGroup />
