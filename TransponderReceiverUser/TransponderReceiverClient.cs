@@ -25,7 +25,7 @@ namespace TransponderReceiverUser
             foreach (var data in e.TransponderData)
             {
                 var plane = Factory.CreatePlane(data);
-                ATM.attach(plane);
+                    ATM.attach(plane);
             }
             Console.Clear();
             ATM.notify("print");

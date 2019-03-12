@@ -37,7 +37,7 @@ namespace TransponderReceiverUser
         public void Update(string tag)
         {
             if(tag == "print")
-            System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp}");
+                System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp}");
         }
 
         public string Indentify()

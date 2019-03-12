@@ -12,17 +12,4 @@ namespace TransponderReceiverUser.ObserverPattern
         string Indentify();
     }
 
-    public class Observer : IObserver
-    {
-        public void Update(string p)
-        {
-                System.Console.WriteLine("{data}");     
-        }
-
-        public string Indentify()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
 }
