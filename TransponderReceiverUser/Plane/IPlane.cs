@@ -1,8 +1,9 @@
 ﻿using System;
+using TransponderReceiverUser.ObserverPattern;
 
 namespace TransponderReceiverUser
 {
-    public interface IPlane
+    public interface IPlane : IObserver
     {
         string Tag { get; set; }
         int XPos { get; set; }

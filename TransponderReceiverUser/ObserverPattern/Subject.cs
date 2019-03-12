@@ -30,11 +30,25 @@ namespace TransponderReceiverUser.ObserverPattern
 
 	    }
 
-	    public void Notify()
+	    public void Notify(string data)
 	    {
-		    Observerlist.ForEach(i => i.Update());
+		    Observerlist.ForEach(i => i.Update(data));
 	    }
 
+        public void attach(Observer NyeObserver)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void detach(Observer FjernetObserver)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void notify()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
