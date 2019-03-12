@@ -23,7 +23,7 @@ namespace TransponderReceiverUser.ObserverPattern
 
         public void detach(Observer FjernetObserver)
         {
-            if(Observerlist.Contains(FjernetObserver) == true)
+            if(Observerlist.Contains(FjernetObserver))
             {
                 Observerlist.Remove(FjernetObserver);
             }
