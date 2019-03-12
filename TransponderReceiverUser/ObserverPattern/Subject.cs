@@ -32,10 +32,7 @@ namespace TransponderReceiverUser.ObserverPattern
 
         public void detach(IObserver FjernetObserver)
         {
-            if(Observerlist.Contains(FjernetObserver))
-            {
-                Observerlist.Remove(FjernetObserver);
-            }
+            Observerlist.RemoveAll(a => a.Indentify() == FjernetObserver.Indentify());
         }
 
         public void notify(string data)
