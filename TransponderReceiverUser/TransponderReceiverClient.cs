@@ -21,20 +21,19 @@ namespace TransponderReceiverUser
 
         public bool isInvalidSpace(Plane sub)
         {
-            if ((int)sub.XPos < 0 || (int)sub.XPos > 80000)
+            if (((int)sub.XPos < 0) || ((int)sub.XPos > 80000))
             {
                 return false;
             }
-            if ((int)sub.YPos < 0 || (int)sub.YPos > 80000)
+            if (((int)sub.YPos < 0) || ((int)sub.YPos > 80000))
             {
                 return false;
             }
-            if ((int)sub.Altitude <= 500 || (int)sub.YPos >= 20000)
+            if (((int)sub.Altitude <= 500) || ((int)sub.YPos >= 20000))
             {
                 return false;
             }
-            ;
-            if (DateTime.Now.Subtract(sub.TimeStamp).TotalSeconds >= 2)
+            if ((DateTime.Now.Subtract(sub.TimeStamp).TotalSeconds) >= 2)
             {
                 return false;
             }
@@ -60,7 +59,11 @@ namespace TransponderReceiverUser
                         }
                     }
                 }
+                else {
+                    ATM.detach(plane);
+                }
             }
+            //Console.SetCursorPosition(0, Console.CursorLeft);
             Console.Clear();
             ATM.notify("print");
         }
