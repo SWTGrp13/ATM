@@ -19,7 +19,7 @@ namespace TransponderReceiverUser
         public int Altitude { get; set; }
         public DateTime TimeStamp { get; set; }
 
-        public Plane(string data)
+        private void ParseData(string data)
         {
             try
             {
@@ -29,15 +29,34 @@ namespace TransponderReceiverUser
                 YPos = Convert.ToInt32(planeData[2]);
                 Altitude = Convert.ToInt32(planeData[3]);
                 TimeStamp = DateTime.ParseExact(planeData[4], "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
-            }catch(Exception e) { 
-                throw new PlaneDataException(1,"Invalid Data String: "+e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new PlaneDataException(1, "Invalid Data String: " + e.Message);
             }
         }
 
-        public void Update(string tag)
+        public Plane(string data)
         {
-            if(tag == "print")
-                System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp}");
+            ParseData(data);
+        }
+
+        public void Update(string data)
+        {
+            ParseData(data);
+        }
+
+        public void Notify(string cmd)
+        {
+            if (cmd == "print")
+            {
+                Print();
+            }
+        }
+
+        public void Print()
+        {
+            System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp}");
         }
 
         public string Indentify()

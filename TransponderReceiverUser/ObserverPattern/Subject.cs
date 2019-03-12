@@ -8,22 +8,26 @@ namespace TransponderReceiverUser.ObserverPattern
 
     public interface ISubject
     {
-	    void attach(IObserver NyeObserver);
+	    bool attach(IObserver NyeObserver);
 	    void detach(IObserver FjernetObserver);
-	    void notify(string data);
+        IObserver getInstance(string tag);
+        void notify(string data);
     }
 
     public class Subject : ISubject
     {
 	    private List<IObserver> Observerlist = new List<IObserver>();
 	    
-        public void attach(IObserver NyeObserver)
+        public bool attach(IObserver NyeObserver)
         {
             List<IObserver> member = Observerlist.FindAll(a => a.Indentify() == NyeObserver.Indentify());
             if (member.Count == 0)
             {
                 Observerlist.Add(NyeObserver);
+                return true;
             }
+
+            return false;
         }
 
         public void detach(IObserver FjernetObserver)
@@ -36,7 +40,12 @@ namespace TransponderReceiverUser.ObserverPattern
 
         public void notify(string data)
         {
-            Observerlist.ForEach(i => i.Update(data));
+            Observerlist.ForEach(i => i.Notify(data));
+        }
+
+        public IObserver getInstance(string tag)
+        {
+            return Observerlist.Single(a => a.Indentify() == tag);
         }
     }
 }
