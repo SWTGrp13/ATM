@@ -9,15 +9,31 @@ namespace TransponderReceiverUser.Calculations
 {
     public class Calculate
     {
-        public double CourseCalc(double y1, double y2, double x1, double x2)
+        public double FindAngle(double x1, double y1)
         {
-            double y = y2 - y1;
-            double x = x2 - x1;
-            double radius = Math.Atan2(y, x);
-            double degree = radius * (180.0 / Math.PI);
+            return 0;
+        }
+
+        public double FindAngle(double x1, double y1, double x2, double y2)
+        {
+            var y = y2 - y1;
+            var x = x2 - x1;
+            var radius = Math.Atan2(y, x);
+            var degree = radius * (180.0 / Math.PI);
             degree = (degree > 0.0 ? degree : 360.0 + degree);
+                if (degree == 360)
+                    return 0.0;
             return degree;
         }
+
+        public double CalculateCourse(double x, double y)
+        {
+            
+
+
+            return 0;
+        }
+
     }
 }
 

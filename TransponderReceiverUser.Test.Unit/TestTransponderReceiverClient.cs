@@ -47,15 +47,18 @@ namespace TransponderReceiverUser.Test.Unit
             _uut = new Calculate();
         }
 
-        [Test]
-
-        public void TestCourseCalculation()
+        [TestCase(3, 3, 6, 6, 45)]
+        [TestCase(6, 6, 3, 3, 225)]
+        [TestCase(3, 3, 3, 3, 0)] //North
+        public void TestCourseCalculation(double x1, double y1, double x2, double y2, double z)
         {
-
+            Assert.That(_uut.FindAngle(x1, y1, x2, y2), Is.EqualTo(z));
         }
-
-
     }
 
 
 }
+
+
+
+
