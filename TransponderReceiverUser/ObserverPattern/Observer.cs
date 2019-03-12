@@ -14,11 +14,6 @@ namespace TransponderReceiverUser.ObserverPattern
 
     public class Observer : IObserver
     {
-        public void AddSubject(Subject s)
-        {
-            s.Attach(this);
-        }
-
         public void Update(string tag)
         {
             foreach (var data in tag)
