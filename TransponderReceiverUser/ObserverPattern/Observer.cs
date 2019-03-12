@@ -18,6 +18,7 @@ namespace TransponderReceiverUser.ObserverPattern
             foreach (var data in tag)
             {
                 System.Console.WriteLine("{data}");
+
             }
             
         }
