@@ -36,7 +36,13 @@ namespace TransponderReceiverUser
 
         public void Update(string tag)
         {
-            throw new NotImplementedException();
+            if(tag == "print")
+            System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp}");
+        }
+
+        public string Indentify()
+        {
+            return Tag;
         }
     }
 }

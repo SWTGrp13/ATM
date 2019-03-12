@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace TransponderReceiverUser.ObserverPattern
@@ -7,21 +8,25 @@ namespace TransponderReceiverUser.ObserverPattern
 
     public interface ISubject
     {
-	    void attach(Observer NyeObserver);
-	    void detach(Observer FjernetObserver);
+	    void attach(IObserver NyeObserver);
+	    void detach(IObserver FjernetObserver);
 	    void notify(string data);
     }
 
     public class Subject : ISubject
     {
-	    private List<Observer> Observerlist; //Liste over tilføjet observers af subject'et
+	    private List<IObserver> Observerlist = new List<IObserver>();
 	    
-        public void attach(Observer NyeObserver)
+        public void attach(IObserver NyeObserver)
         {
-            Observerlist.Add(NyeObserver);
+            List<IObserver> member = Observerlist.FindAll(a => a.Indentify() == NyeObserver.Indentify());
+            if (member.Count == 0)
+            {
+                Observerlist.Add(NyeObserver);
+            }
         }
 
-        public void detach(Observer FjernetObserver)
+        public void detach(IObserver FjernetObserver)
         {
             if(Observerlist.Contains(FjernetObserver))
             {

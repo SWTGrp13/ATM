@@ -1,10 +1,14 @@
-﻿using TransponderReceiver;
+﻿using System;
+using TransponderReceiver;
+using TransponderReceiverUser.ObserverPattern;
 
 namespace TransponderReceiverUser
 {
     public class TransponderReceiverClient
     {
         private ITransponderReceiver receiver;
+        private Subject ATM = new Subject();
+
         // Using constructor injection for dependency/ies
         public TransponderReceiverClient(ITransponderReceiver receiver)
         {
@@ -20,8 +24,11 @@ namespace TransponderReceiverUser
             // Just display data
             foreach (var data in e.TransponderData)
             {
-                System.Console.WriteLine($"{data}");    
+                var plane = Factory.CreatePlane(data);
+                ATM.attach(plane);
             }
+            Console.Clear();
+            ATM.notify("print");
         }
     }
 }
