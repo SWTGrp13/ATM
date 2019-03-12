@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransponderReceiverUser.Factory
+namespace TransponderReceiverUser
 {
     public static class Factory
     {
@@ -12,6 +12,5 @@ namespace TransponderReceiverUser.Factory
         {
              return new Plane(transmitterData);
         }
-
     }
 }
