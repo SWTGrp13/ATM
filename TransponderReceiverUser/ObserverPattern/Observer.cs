@@ -14,7 +14,7 @@ namespace TransponderReceiverUser.ObserverPattern
 
     public class Observer : IObserver
     {
-        public void Update(Plane p)
+        public void Update(string p)
         {
                 System.Console.WriteLine("{data}");     
         }
