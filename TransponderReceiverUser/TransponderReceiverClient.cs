@@ -33,6 +33,11 @@ namespace TransponderReceiverUser
             {
                 return false;
             }
+            ;
+            if (DateTime.Now.Subtract(sub.TimeStamp).TotalSeconds >= 2)
+            {
+                return false;
+            }
 
             return true;
         }

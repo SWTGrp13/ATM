@@ -56,7 +56,7 @@ namespace TransponderReceiverUser
 
         public void Print()
         {
-            System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp}");
+            System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp} - {DateTime.Now.Subtract(TimeStamp).TotalSeconds}");
         }
 
         public string Indentify()
