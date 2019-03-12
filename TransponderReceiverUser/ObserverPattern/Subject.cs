@@ -34,5 +34,4 @@ namespace TransponderReceiverUser.ObserverPattern
             Observerlist.ForEach(i => i.Update(data));
         }
     }
-
 }

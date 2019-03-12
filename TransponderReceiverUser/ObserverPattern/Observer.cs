@@ -8,19 +8,14 @@ namespace TransponderReceiverUser.ObserverPattern
 {
     public interface IObserver
     {
-        void Update(string tag);
+        void Update(Plane p);
     }
 
     public class Observer : IObserver
     {
-        public void Update(string tag)
+        public void Update(Plane p)
         {
-            foreach (var data in tag)
-            {
-                System.Console.WriteLine("{data}");
-
-            }
-            
+                System.Console.WriteLine("{data}");     
         }
     }
 }
