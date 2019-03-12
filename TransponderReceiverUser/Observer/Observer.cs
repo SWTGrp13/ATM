@@ -1,17 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransponderReceiverUser.Factory
+namespace TransponderReceiverUser.Observer
 {
-    public static class Factory
+    public interface IObserver
     {
-        public static Plane CreatePlane(string transmitterData)
+        void Update(string tag);
+    }
+
+    public class Observer : IObserver
+    {
+        public void AddSubject(subject plane)
         {
-             return new Plane(transmitterData);
+            plane.Attach(this);
         }
 
+        public void Update(string tag)
+        {
+            foreach (var data in tag)
+            {
+                System.Console.WriteLine("{data}");
+            }
+            
+        }
     }
 }
