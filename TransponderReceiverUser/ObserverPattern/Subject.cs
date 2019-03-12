@@ -9,45 +9,29 @@ namespace TransponderReceiverUser.ObserverPattern
     {
 	    void attach(Observer NyeObserver);
 	    void detach(Observer FjernetObserver);
-	    void notify();
+	    void notify(string data);
     }
 
     public class Subject : ISubject
     {
 	    private List<Observer> Observerlist; //Liste over tilføjet observers af subject'et
 	    
-	    public void Attach(Observer NyeObserver) //Tilføjer en observer til observerlist 
-	    {
-		    Observerlist.Add(NyeObserver);
-	    }
-	    
-	    public void Detach(Observer FjernetObserver) // Kigger gennem observerliste og fjerner observeren hvis den er i listen
-	    {
-		    if(Observerlist.Contains(FjernetObserver) == true)
-		    {
-			    Observerlist.Remove(FjernetObserver);
-		    }
-
-	    }
-
-	    public void Notify(string data)
-	    {
-		    Observerlist.ForEach(i => i.Update(data));
-	    }
-
         public void attach(Observer NyeObserver)
         {
-            throw new NotImplementedException();
+            Observerlist.Add(NyeObserver);
         }
 
         public void detach(Observer FjernetObserver)
         {
-            throw new NotImplementedException();
+            if(Observerlist.Contains(FjernetObserver) == true)
+            {
+                Observerlist.Remove(FjernetObserver);
+            }
         }
 
-        public void notify()
+        public void notify(string data)
         {
-            throw new NotImplementedException();
+            Observerlist.ForEach(i => i.Update(data));
         }
     }
 
