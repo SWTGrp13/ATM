@@ -8,12 +8,8 @@ namespace TransponderReceiverUser.ObserverPattern
 {
     public interface IObserver
     {
-<<<<<<< HEAD
         void Update(string tag);
         string Indentify();
-=======
-        void Update(Plane p);
->>>>>>> 2737a3c092080d2d86a83d5db9720479ddb02d53
     }
 
     public class Observer : IObserver
