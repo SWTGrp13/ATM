@@ -33,5 +33,10 @@ namespace TransponderReceiverUser
                 throw new PlaneDataException(1,"Invalid Data String: "+e.Message);
             }
         }
+
+        public void Update(string tag)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
