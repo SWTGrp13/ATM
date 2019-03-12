@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factory\Factory.cs" />
+    <Compile Include="Observer\Observer.cs" />
     <Compile Include="Plane\IPlane.cs" />
     <Compile Include="Plane\Plane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
