@@ -5,7 +5,6 @@ namespace TransponderReceiverUser
     public class TransponderReceiverClient
     {
         private ITransponderReceiver receiver;
-        private Monitor PlaneMonitor = new Monitor();
 
         // Using constructor injection for dependency/ies
         public TransponderReceiverClient(ITransponderReceiver receiver)
@@ -22,8 +21,7 @@ namespace TransponderReceiverUser
             // Just display data
             foreach (var data in e.TransponderData)
             {
-                Factory.Factory.CreatePlane(data);
-                //System.Console.WriteLine($" {data}");    
+              System.Console.WriteLine($"{data}");    
             }
         }
     }
