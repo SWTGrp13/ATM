@@ -2,6 +2,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using TransponderReceiver;
+using TransponderReceiverUser.Calculations;
 
 namespace TransponderReceiverUser.Test.Unit
 {
@@ -34,4 +35,27 @@ namespace TransponderReceiverUser.Test.Unit
             // Assert something here or use an NSubstitute Received
         }
     }
+
+    public class TestCalculations
+    {
+        private Calculate _uut;
+
+        [SetUp]
+
+        public void Setup()
+        {
+            _uut = new Calculate();
+        }
+
+        [Test]
+
+        public void TestCourseCalculation()
+        {
+
+        }
+
+
+    }
+
+
 }

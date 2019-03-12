@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculations\Calculations.cs" />
     <Compile Include="Factory\Factory.cs" />
     <Compile Include="ObserverPattern\Observer.cs" />
     <Compile Include="Plane\IPlane.cs" />
