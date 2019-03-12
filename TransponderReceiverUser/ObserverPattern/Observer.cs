@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransponderReceiverUser.Observer
+namespace TransponderReceiverUser.ObserverPattern
 {
     public interface IObserver
     {
@@ -14,9 +14,9 @@ namespace TransponderReceiverUser.Observer
 
     public class Observer : IObserver
     {
-        public void AddSubject(subject plane)
+        public void AddSubject(Subject s)
         {
-            plane.Attach(this);
+            s.Attach(this);
         }
 
         public void Update(string tag)

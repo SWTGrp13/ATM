@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 
 
-namespace TransponderReceiverUser.Subject
+namespace TransponderReceiverUser.ObserverPattern
 {
 
-    public interface Isubject
+    public interface ISubject
     {
 	    void attach(Observer NyeObserver);
 	    void detach(Observer FjernetObserver);
 	    void notify();
     }
 
-    public class Subject : Isubject
+    public class Subject : ISubject
     {
 	    private List<Observer> Observerlist; //Liste over tilføjet observers af subject'et
 	    
