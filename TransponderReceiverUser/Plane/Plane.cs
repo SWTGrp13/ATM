@@ -16,6 +16,8 @@ namespace TransponderReceiverUser
         public string Tag { get; set; }
         public int XPos { get; set; }
         public int YPos { get; set; }
+        public int OldYPos { get; set; }
+        public int OldXPos { get; set; }
         public int Altitude { get; set; }
         public DateTime TimeStamp { get; set; }
 
