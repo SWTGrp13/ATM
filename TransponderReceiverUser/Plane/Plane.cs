@@ -17,10 +17,16 @@ namespace TransponderReceiverUser
         public int XPos { get; set; }
         public int YPos { get; set; }
         public int Altitude { get; set; }
+        public int Velocity { get; set; }
+        public int Degrees { get; set; }
+        public bool ConditionCheck { get; set; }
         public DateTime TimeStamp { get; set; }
 
         private void ParseData(string data)
         {
+            Degrees = 0;
+            Velocity = 0;
+            ConditionCheck = false;
             try
             {
                 var planeData = data.Split(';');
@@ -51,7 +57,13 @@ namespace TransponderReceiverUser
             if (cmd == "print")
             {
                 Print();
+            } else if (cmd == "warn")
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Print();
+                Console.ResetColor();
             }
+
         }
 
         public void Print()
