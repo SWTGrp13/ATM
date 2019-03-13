@@ -44,6 +44,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ATR\ATR.cs" />
+    <Compile Include="ATR\IATR.cs" />
     <Compile Include="Calculations\Calculations.cs" />
     <Compile Include="Factory\Factory.cs" />
     <Compile Include="ObserverPattern\Observer.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using TransponderReceiverUser.Calculations;
 
 namespace TransponderReceiverUser
 {
@@ -19,7 +20,11 @@ namespace TransponderReceiverUser
         public int OldYPos { get; set; }
         public int OldXPos { get; set; }
         public int Altitude { get; set; }
+        public double Velocity { get; set; }
+        public double Degrees { get; set; }
+        public bool ConditionCheck { get; set; }
         public DateTime TimeStamp { get; set; }
+        public DateTime OldTimeStamp { get; set; }
 
         private void ParseData(string data)
         {
@@ -31,6 +36,8 @@ namespace TransponderReceiverUser
                 YPos = Convert.ToInt32(planeData[2]);
                 Altitude = Convert.ToInt32(planeData[3]);
                 TimeStamp = DateTime.ParseExact(planeData[4], "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+                Velocity = Calculate.FindVelocity(this);
+                Degrees = Calculate.FindDegree(this);
             }
             catch (Exception e)
             {
@@ -45,6 +52,9 @@ namespace TransponderReceiverUser
 
         public void Update(string data)
         {
+            OldYPos = YPos;
+            OldXPos = XPos;
+            OldTimeStamp = TimeStamp;
             ParseData(data);
         }
 
@@ -53,12 +63,18 @@ namespace TransponderReceiverUser
             if (cmd == "print")
             {
                 Print();
+            } else if (cmd == "warn")
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Print();
+                Console.ResetColor();
             }
+
         }
 
         public void Print()
         {
-            System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp} - {DateTime.Now.Subtract(TimeStamp).TotalSeconds}");
+            System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp} - {DateTime.Now.Subtract(TimeStamp).TotalSeconds} \t Velocity: {Velocity} m/s \t Degree: {Degrees} deg");
         }
 
         public string Indentify()

@@ -7,32 +7,32 @@ using System.Threading.Tasks;
 
 namespace TransponderReceiverUser.Calculations
 {
-    public class Calculate
+    public static class Calculate
     {
-  
-        public double FindAngle(double x1, double y1, double x2, double y2)
+        public static double FindDegree(Plane plane)
         {
-            var y = y2 - y1;
-            var x = x2 - x1;
+            var y = plane.YPos - plane.OldYPos;
+            var x = plane.XPos - plane.OldXPos;
             var radians = Math.Atan2(y, x);
             var degree = radians * (180.0 / Math.PI);
-            degree -= 90;
             if (degree < 0)
                 degree += 360;
             degree = (degree > 0.0 ? degree : 360.0 + degree);
-                if (degree == 360)
-                    return 0.0;
-            return degree;
+            if (degree == 360)
+                return 0.0;
+            return Convert.ToInt32(degree);
         }
 
-        public double FindSpeed(Plane fly)
+        public static double FindVelocity(Plane plane)
         {
-            var y = fly.YPos - fly.OldYPos;
-            var x = fly.XPos - fly.OldXPos;
-            var hyp = sqrt(x ^ 2, y ^ 2);
-            
+            var y = Math.Abs(plane.YPos) - Math.Abs(plane.OldYPos);
+            var x = Math.Abs(plane.XPos) - Math.Abs(plane.OldXPos);
+            var hyp = Math.Sqrt((x ^ 2) + (y ^ 2));
+            var deltaTime = plane.TimeStamp.Subtract(plane.OldTimeStamp).TotalSeconds;
+            var velocity = (y - x / deltaTime);
+            //return Convert.ToInt32(velocity);
+            return velocity;
         }
-
     }
 }
 
