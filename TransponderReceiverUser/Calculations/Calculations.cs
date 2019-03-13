@@ -16,7 +16,7 @@ namespace TransponderReceiverUser.Calculations
             var x = x2 - x1;
             var radians = Math.Atan2(y, x);
             var degree = radians * (180.0 / Math.PI);
-            degree =- 90;
+            degree -= 90;
             if (degree < 0)
                 degree += 360;
             degree = (degree > 0.0 ? degree : 360.0 + degree);
@@ -24,8 +24,14 @@ namespace TransponderReceiverUser.Calculations
                     return 0.0;
             return degree;
         }
-        
-        
+
+        public double FindSpeed(Plane fly)
+        {
+            var y = fly.YPos - fly.OldYPos;
+            var x = fly.XPos - fly.OldXPos;
+            var hyp = sqrt(x ^ 2, y ^ 2);
+            
+        }
 
     }
 }
