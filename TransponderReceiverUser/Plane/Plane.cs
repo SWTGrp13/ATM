@@ -24,6 +24,7 @@ namespace TransponderReceiverUser
         public double Degrees { get; set; }
         public bool ConditionCheck { get; set; }
         public DateTime TimeStamp { get; set; }
+        public DateTime OldTimeStamp { get; set; }
 
         private void ParseData(string data)
         {
@@ -51,6 +52,9 @@ namespace TransponderReceiverUser
 
         public void Update(string data)
         {
+            OldYPos = YPos;
+            OldXPos = XPos;
+            OldTimeStamp = TimeStamp;
             ParseData(data);
         }
 
