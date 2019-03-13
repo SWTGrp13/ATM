@@ -25,13 +25,12 @@ namespace TransponderReceiverUser.Calculations
 
         public static double FindVelocity(Plane plane)
         {
-            var y = Math.Abs(plane.YPos - plane.OldYPos);
-            var x = Math.Abs(plane.XPos - plane.OldXPos);
+            var y = plane.YPos - plane.OldYPos;
+            var x = plane.XPos - plane.OldXPos;
             var hyp = Math.Sqrt((x ^ 2) + (y ^ 2));
             var deltaTime = plane.TimeStamp.Subtract(plane.OldTimeStamp).TotalSeconds;
             var velocity = (hyp / deltaTime);
-            //return Convert.ToInt32(velocity);
-            return x;
+            return Convert.ToInt32(velocity);
         }
     }
 }
