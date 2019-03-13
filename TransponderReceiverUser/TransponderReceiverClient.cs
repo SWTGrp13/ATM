@@ -33,7 +33,7 @@ namespace TransponderReceiverUser
             {
                 return false;
             }
-            if ((DateTime.Now.Subtract(sub.TimeStamp).TotalSeconds) >= 2)
+            if (DateTime.Now.Subtract(sub.TimeStamp).TotalSeconds >= 2)
             {
                 return false;
             }
@@ -53,17 +53,12 @@ namespace TransponderReceiverUser
                     {
                         plane = ATM.getInstance(plane.Tag) as Plane;
                         plane.Update(data);
-                        if (!isInvalidSpace(plane))
-                        {
-                            ATM.detach(plane);
-                        }
                     }
                 }
                 else {
                     ATM.detach(plane);
                 }
             }
-            //Console.SetCursorPosition(0, Console.CursorLeft);
             Console.Clear();
             ATM.notify("print");
         }

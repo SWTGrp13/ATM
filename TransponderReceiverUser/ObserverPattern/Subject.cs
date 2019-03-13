@@ -20,13 +20,19 @@ namespace TransponderReceiverUser.ObserverPattern
 	    
         public bool attach(IObserver NyeObserver)
         {
-            List<IObserver> member = Observerlist.FindAll(a => a.Indentify() == NyeObserver.Indentify());
-            if (member.Count == 0)
+            IObserver plane = null;
+            try
+            {
+                plane = Observerlist.Single(a => a.Indentify() == NyeObserver.Indentify());
+            }
+            catch (Exception e)
+            {}
+
+            if (plane == null)
             {
                 Observerlist.Add(NyeObserver);
                 return true;
             }
-
             return false;
         }
 
