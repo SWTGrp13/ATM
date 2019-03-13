@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace TransponderReceiverUser.ATR
             {
                 return false;
             }
-            if (DateTime.Now.Subtract(sub.TimeStamp).TotalSeconds >= 2)
+            if ((DateTime.Now.Subtract(sub.TimeStamp).TotalSeconds) >= 2)
             {
                 return false;
             }
@@ -45,7 +46,7 @@ namespace TransponderReceiverUser.ATR
             {
                 var plane = current as Plane;
 
-                Console.WriteLine($"calculating metrics for {plane.Tag}");
+                //Console.WriteLine($"calculating metrics for {plane.Tag}");
             }
 
         }

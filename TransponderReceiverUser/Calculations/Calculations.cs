@@ -27,11 +27,10 @@ namespace TransponderReceiverUser.Calculations
         {
             var y = Math.Abs(plane.YPos) - Math.Abs(plane.OldYPos);
             var x = Math.Abs(plane.XPos) - Math.Abs(plane.OldXPos);
-            var hyp = Math.Sqrt((x ^ 2) + (y ^ 2));
+            var hyp = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
             var deltaTime = plane.TimeStamp.Subtract(plane.OldTimeStamp).TotalSeconds;
-            var velocity = (y - x / deltaTime);
-            //return Convert.ToInt32(velocity);
-            return velocity;
+            var velocity = (hyp / deltaTime);
+            return Convert.ToInt32(velocity);
         }
     }
 }
