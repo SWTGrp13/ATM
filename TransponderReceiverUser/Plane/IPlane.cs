@@ -9,6 +9,9 @@ namespace TransponderReceiverUser
         int XPos { get; set; }
         int YPos { get; set; }
         int Altitude { get; set; }
+        int Velocity { get; set; }
+        int Degrees { get; set; }
+        bool ConditionCheck { get; set; }
         DateTime TimeStamp { get; set; }
     }
 }

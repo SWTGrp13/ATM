@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TransponderReceiver;
+using TransponderReceiverUser.ATR;
 
 namespace TransponderReceiverApplication
 {
@@ -16,7 +17,7 @@ namespace TransponderReceiverApplication
             var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
             // Dependency injection with the real TDR
-            var system = new TransponderReceiverUser.TransponderReceiverClient(receiver);
+            var system = new TransponderReceiverUser.TransponderReceiverClient(receiver, new TransponderReceiverUser.ATR.Tower());
           
             // Let the real TDR execute in the background
             while (true)

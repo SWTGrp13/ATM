@@ -2,6 +2,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using TransponderReceiver;
+using TransponderReceiverUser.ATR;
 using TransponderReceiverUser.Calculations;
 
 namespace TransponderReceiverUser.Test.Unit
@@ -16,7 +17,7 @@ namespace TransponderReceiverUser.Test.Unit
             // Make a fake Transponder Data Receiver
             _fakeTransponderReceiver = Substitute.For<ITransponderReceiver>();
             // Inject the fake TDR
-            _uut = new TransponderReceiverClient(_fakeTransponderReceiver);
+            _uut = new TransponderReceiverClient(_fakeTransponderReceiver, new Tower());
         }
 
         [Test]

@@ -50,5 +50,10 @@ namespace TransponderReceiverUser.ObserverPattern
         {
             return Observerlist.Single(a => a.Indentify() == tag);
         }
+
+        public List<IObserver> getInstances()
+        {
+            return Observerlist;
+        }
     }
 }
