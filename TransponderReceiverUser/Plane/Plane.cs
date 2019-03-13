@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using TransponderReceiverUser.Calculations;
 
 namespace TransponderReceiverUser
 {
@@ -19,16 +20,13 @@ namespace TransponderReceiverUser
         public int OldYPos { get; set; }
         public int OldXPos { get; set; }
         public int Altitude { get; set; }
-        public int Velocity { get; set; }
-        public int Degrees { get; set; }
+        public double Velocity { get; set; }
+        public double Degrees { get; set; }
         public bool ConditionCheck { get; set; }
         public DateTime TimeStamp { get; set; }
 
         private void ParseData(string data)
         {
-            Degrees = 0;
-            Velocity = 0;
-            ConditionCheck = false;
             try
             {
                 var planeData = data.Split(';');
@@ -37,6 +35,8 @@ namespace TransponderReceiverUser
                 YPos = Convert.ToInt32(planeData[2]);
                 Altitude = Convert.ToInt32(planeData[3]);
                 TimeStamp = DateTime.ParseExact(planeData[4], "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+                Velocity = Calculate.FindVelocity(this);
+                Degrees = Calculate.FindDegree(this);
             }
             catch (Exception e)
             {
@@ -70,7 +70,7 @@ namespace TransponderReceiverUser
 
         public void Print()
         {
-            System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp} - {DateTime.Now.Subtract(TimeStamp).TotalSeconds}");
+            System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp} - {DateTime.Now.Subtract(TimeStamp).TotalSeconds} \t Velocity: {Velocity} m/s \t Degree: {Degrees} deg");
         }
 
         public string Indentify()
