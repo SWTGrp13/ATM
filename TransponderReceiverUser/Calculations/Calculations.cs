@@ -34,6 +34,11 @@ namespace TransponderReceiverUser.Calculations
             return 0;
         }
 
+        //public double FindVelocity()
+        //{
+
+        //}
+
     }
 }
 
