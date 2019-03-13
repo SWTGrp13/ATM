@@ -14,9 +14,10 @@ namespace TransponderReceiverUser.Calculations
         {
             var y = y2 - y1;
             var x = x2 - x1;
-            var radians = Math.Atan2(y, x);
+            //var radians = Math.Atan2(y, x);
+            var radians = Math.Atan2(x, y);
             var degree = radians * (180.0 / Math.PI);
-            degree = -90;
+            //degree -= 90;
             if (degree < 0)
                 degree += 360;
             degree = (degree > 0.0 ? degree : 360.0 + degree);
