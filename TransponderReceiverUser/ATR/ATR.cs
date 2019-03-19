@@ -63,6 +63,18 @@ namespace TransponderReceiverUser.ATR
                         plane = ATM.getInstance(plane.Tag) as Plane;
                         plane.Update(data);
                     }
+                    // loop over all planes to check for hanging data..
+                    var inst = ATM.getInstances().ToList();
+                    lock (inst) { 
+                        foreach (var p in inst) {
+                            var pne = p as Plane;
+                            if (!isInvalidSpace(pne)) {
+                                ATM.detach(pne);
+                            }
+                        }
+                    }
+
+
                     CalculateMetrixes(plane);
                 }
                 else
