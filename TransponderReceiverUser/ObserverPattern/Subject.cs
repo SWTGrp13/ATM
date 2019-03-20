@@ -20,30 +20,34 @@ namespace TransponderReceiverUser.ObserverPattern
 	    
         public bool attach(IObserver NyeObserver)
         {
-            IObserver plane = null;
-            try
-            {
-                plane = Observerlist.Single(a => a.Indentify() == NyeObserver.Indentify());
-            }
-            catch (Exception e)
-            {}
+            lock (Observerlist) { 
+                IObserver plane = null;
+                try
+                {
+                    plane = Observerlist.Single(a => a.Indentify() == NyeObserver.Indentify());
+                }
+                catch (Exception e)
+                {}
 
-            if (plane == null)
-            {
-                Observerlist.Add(NyeObserver);
-                return true;
+                if (plane == null)
+                {
+                    Observerlist.Add(NyeObserver);
+                    return true;
+                }
             }
             return false;
         }
 
         public void detach(IObserver FjernetObserver)
         {
-            Observerlist.RemoveAll(a => a.Indentify() == FjernetObserver.Indentify());
+            lock(Observerlist)
+                Observerlist.RemoveAll(a => a.Indentify() == FjernetObserver.Indentify());
         }
 
         public void notify(string data)
         {
-            Observerlist.ForEach(i => i.Notify(data));
+            lock(Observerlist)
+                Observerlist.ForEach(i => i.Notify(data));
         }
 
         public IObserver getInstance(string tag)

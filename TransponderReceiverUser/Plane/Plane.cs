@@ -74,6 +74,7 @@ namespace TransponderReceiverUser
 
         public void Print()
         {
+            char delta = '\u0394';
             System.Console.WriteLine($"Plane: {Tag} \tAltitude: {Altitude}\t Cords: {XPos},{YPos} \tTs: {TimeStamp} - {DateTime.Now.Subtract(TimeStamp).TotalSeconds} \t Velocity: {Velocity} m/s \t Degree: {Degrees} deg");
         }
 
