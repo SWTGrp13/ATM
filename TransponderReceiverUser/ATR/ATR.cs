@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using TransponderReceiver;
 using TransponderReceiverUser.Calculations;
 using TransponderReceiverUser.ObserverPattern;
@@ -38,16 +40,33 @@ namespace TransponderReceiverUser.ATR
 
         private void CalculateMetrixes(Plane CurrentPlane)
         {
-            // todo : calculate flight metrix here.
-            // Queue all planes
+            
+            int Xpos = CurrentPlane.XPos;
+            int Ypos = CurrentPlane.YPos;
+            int[] CurrentPlaneCoordinates = new int[2];
+            CurrentPlaneCoordinates[0] = Xpos;
+            CurrentPlaneCoordinates[1] = Ypos;
+            
             var planes = ATM.getInstances();
-           
-            foreach (var current in planes)
-            {
-                var plane = current as Plane;
 
-                //Console.WriteLine($"calculating metrics for {plane.Tag}");
-            }
+                for (int i = 0; i < planes.Count; i++)
+                {
+                    var plane = planes[i] as Plane;
+                    int[] OtherPlaneCoordinates = {plane.XPos,plane.YPos};
+                    double xLength = CurrentPlaneCoordinates[0] - OtherPlaneCoordinates[0];
+                    double yLength = CurrentPlaneCoordinates[1] - OtherPlaneCoordinates[1];
+                    double HorizontalVector = Math.Sqrt((Math.Pow(xLength,2)) + (Math.Pow(yLength,2)));
+                    double HeightVector = CurrentPlane.Altitude - plane.Altitude;
+
+
+                    if (HorizontalVector <= 5000 && HeightVector <= 300)
+                    {
+                      Console.WriteLine("The plane " + plane.Tag + " And" + plane.Tag + " is coliding!!!");
+                    }
+                    
+                }
+       
+            
 
         }
 
