@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestClasses\CalculationsUnitTest.cs" />
     <Compile Include="UnitTestClasses\FactoryUnitTest.cs" />
+    <Compile Include="UnitTestClasses\LogUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
