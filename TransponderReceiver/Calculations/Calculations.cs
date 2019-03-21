@@ -35,7 +35,7 @@ namespace TransponderReceiverLib.Calculations
             return Convert.ToInt32(velocity);
         }
 
-        public static bool isInvalidSpace(Plane sub)
+        public static bool isInValidSpace(Plane sub)
         {
             if (((int)sub.XPos < 0) || ((int)sub.XPos > 80000))
             {
@@ -45,7 +45,7 @@ namespace TransponderReceiverLib.Calculations
             {
                 return false;
             }
-            if (((int)sub.Altitude <= 500) || ((int)sub.YPos >= 20000))
+            if (((int)sub.Altitude <= 500) || ((int)sub.Altitude >= 20000))
             {
                 return false;
             }

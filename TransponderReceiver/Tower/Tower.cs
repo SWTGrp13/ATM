@@ -33,7 +33,7 @@ namespace TransponderReceiverLib.Tower
             lock (ListOfTracks)
             {
                 // plane/track is in valid airspace.
-                if (Calculate.isInvalidSpace(plane))
+                if (Calculate.isInValidSpace(plane))
                 {
                     ListOfTracks.getInstance(plane.Tag).Update(encodedTransponderMessage);
                 }
@@ -42,7 +42,7 @@ namespace TransponderReceiverLib.Tower
                 foreach (var currentPlane in ListOfTracks.getInstances().ToList())
                 {
                     var p = currentPlane as Plane;
-                    if (!Calculate.isInvalidSpace(p))
+                    if (!Calculate.isInValidSpace(p))
                     {
                         ListOfTracks.detach(p);
                     }
