@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using TransponderReceiver;
+using TransponderReceiverLib.Calculations;
+
+
 
 namespace TransponderReceiver.Test.UnitTestClasses
 {
@@ -23,13 +25,13 @@ namespace TransponderReceiver.Test.UnitTestClasses
         //[TestCase()]
         //public void FindDegree_TRUE(int x, int y, int degree)
         //{
-        //    Assert.That(UUT.FrindDegree(x, y), Is.EqualTo(degree).Within(0.01));
+        //    Assert.That(UUT.FindDegree(x, y), Is.EqualTo(degree).Within(0.01));
         //}
 
         //[TestCase()]
         //public void FindDegree_FALSE(int x, int y, int degree)
         //{
-        //    Assert.That(UUT.FrindDegree(x, y), Is.Not.EqualTo(degree).Within(0.01));
+        //    Assert.That(UUT.FindDegree(x, y), Is.Not.EqualTo(degree).Within(0.01));
         //}
 
         //[TestCase()]
