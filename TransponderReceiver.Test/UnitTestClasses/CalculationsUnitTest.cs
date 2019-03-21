@@ -19,7 +19,6 @@ namespace TransponderReceiver.Test.UnitTestClasses
         //    UUT = new Calculate();
         //}
 
-
         //[TestCase()]
         //public void FindDegree_TRUE(int x, int y, int degree)
         //{
