@@ -1,6 +1,0 @@
-C:\Users\mie24\OneDrive - Aarhus universitet\IKT\4. semester\SWT\ATM_REFACTOR\Monitor\TransponderReceiver.Test\bin\Debug\TransponderReceiver.Test.dll
-C:\Users\mie24\OneDrive - Aarhus universitet\IKT\4. semester\SWT\ATM_REFACTOR\Monitor\TransponderReceiver.Test\bin\Debug\TransponderReceiver.Test.pdb
-C:\Users\mie24\OneDrive - Aarhus universitet\IKT\4. semester\SWT\ATM_REFACTOR\Monitor\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.csprojAssemblyReference.cache
-C:\Users\mie24\OneDrive - Aarhus universitet\IKT\4. semester\SWT\ATM_REFACTOR\Monitor\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.csproj.CoreCompileInputs.cache
-C:\Users\mie24\OneDrive - Aarhus universitet\IKT\4. semester\SWT\ATM_REFACTOR\Monitor\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.dll
-C:\Users\mie24\OneDrive - Aarhus universitet\IKT\4. semester\SWT\ATM_REFACTOR\Monitor\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.pdb

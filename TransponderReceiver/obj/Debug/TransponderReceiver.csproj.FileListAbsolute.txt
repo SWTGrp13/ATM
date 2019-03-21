@@ -1,0 +1,6 @@
+C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\bin\Debug\TransponderReceiver.dll
+C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\bin\Debug\TransponderReceiver.pdb
+C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\obj\Debug\TransponderReceiver.csprojAssemblyReference.cache
+C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\obj\Debug\TransponderReceiver.csproj.CoreCompileInputs.cache
+C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\obj\Debug\TransponderReceiver.dll
+C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\obj\Debug\TransponderReceiver.pdb

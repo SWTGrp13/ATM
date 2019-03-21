@@ -10,7 +10,5 @@ namespace TransponderReceiver.Test
     public class TransponderTest
     {
 
-
-
     }
 }

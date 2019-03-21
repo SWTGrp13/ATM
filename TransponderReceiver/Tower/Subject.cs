@@ -22,15 +22,14 @@ namespace TransponderReceiverLib.Tower
         public bool attach(IObserver NyeObserver)
         {
         
-                bool plane = false;
-                
-                string obs = NyeObserver.Identify();
-                plane = Observerlist.Any(a => a.Identify() == obs);
-                if (plane == false)
-                {
-                    Observerlist.Add(NyeObserver);
-                    return true;
-                }
+            bool plane = false;
+            string obs = NyeObserver.Identify();
+            plane = Observerlist.Any(a => a.Identify() == obs);
+            if (plane == false)
+            {
+                Observerlist.Add(NyeObserver);
+                return true;
+            }
 
             return false;
         }
