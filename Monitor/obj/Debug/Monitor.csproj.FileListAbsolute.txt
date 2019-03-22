@@ -9,13 +9,3 @@ C:\Users\mikke\source\ATM_REFACTOR\Monitor\Monitor\obj\Debug\Monitor.csproj.Core
 C:\Users\mikke\source\ATM_REFACTOR\Monitor\Monitor\obj\Debug\Monitor.csproj.CopyComplete
 C:\Users\mikke\source\ATM_REFACTOR\Monitor\Monitor\obj\Debug\Monitor.exe
 C:\Users\mikke\source\ATM_REFACTOR\Monitor\Monitor\obj\Debug\Monitor.pdb
-C:\Users\mikke\source\repos\ATM\Monitor\bin\Debug\Monitor.exe.config
-C:\Users\mikke\source\repos\ATM\Monitor\bin\Debug\Monitor.exe
-C:\Users\mikke\source\repos\ATM\Monitor\bin\Debug\Monitor.pdb
-C:\Users\mikke\source\repos\ATM\Monitor\bin\Debug\TransponderReceiverLib.dll
-C:\Users\mikke\source\repos\ATM\Monitor\bin\Debug\TransponderReceiverLib.pdb
-C:\Users\mikke\source\repos\ATM\Monitor\obj\Debug\Monitor.csprojAssemblyReference.cache
-C:\Users\mikke\source\repos\ATM\Monitor\obj\Debug\Monitor.csproj.CoreCompileInputs.cache
-C:\Users\mikke\source\repos\ATM\Monitor\obj\Debug\Monitor.csproj.CopyComplete
-C:\Users\mikke\source\repos\ATM\Monitor\obj\Debug\Monitor.exe
-C:\Users\mikke\source\repos\ATM\Monitor\obj\Debug\Monitor.pdb
