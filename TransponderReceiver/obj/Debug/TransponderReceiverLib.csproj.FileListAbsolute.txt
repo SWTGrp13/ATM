@@ -4,3 +4,9 @@ C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\obj\Debug\Transpo
 C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\obj\Debug\TransponderReceiverLib.csproj.CoreCompileInputs.cache
 C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\obj\Debug\TransponderReceiverLib.dll
 C:\Users\mikke\source\ATM_REFACTOR\Monitor\TransponderReceiver\obj\Debug\TransponderReceiverLib.pdb
+C:\Users\mikke\source\repos\ATM\TransponderReceiver\bin\Debug\TransponderReceiverLib.dll
+C:\Users\mikke\source\repos\ATM\TransponderReceiver\bin\Debug\TransponderReceiverLib.pdb
+C:\Users\mikke\source\repos\ATM\TransponderReceiver\obj\Debug\TransponderReceiverLib.csprojAssemblyReference.cache
+C:\Users\mikke\source\repos\ATM\TransponderReceiver\obj\Debug\TransponderReceiverLib.csproj.CoreCompileInputs.cache
+C:\Users\mikke\source\repos\ATM\TransponderReceiver\obj\Debug\TransponderReceiverLib.dll
+C:\Users\mikke\source\repos\ATM\TransponderReceiver\obj\Debug\TransponderReceiverLib.pdb

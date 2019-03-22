@@ -38,6 +38,14 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That(Calculate.isInValidSpace(Factory.GetPlane(x + Time)), Is.False);
         }
 
+        [TestCase("KAT130;90045;12932;21000;", 5)] // DateTime Invalid
+        [TestCase("KAT130;90045;12932;21000;", 2)] // DateTime Invalid
+        public void TestTimeIsExceeded(string eventdata, int diff)
+        {
+            var TimeSpan = new DateTime().Add(new TimeSpan(diff, 0, 0)).ToString("yyyyMMddHHmmssfff");
+            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(eventdata + TimeSpan)), Is.False);
+        }
+
         [TestCase("ATR423;90045;12932;14000;20151006213456789")] // Time invalid
         [TestCase("ATR423;90045;12932;14000;20201006213456789")] // Time invalid
         [TestCase("ATR423;90045;12932;14000;20161006213456789")] // Time invalid
