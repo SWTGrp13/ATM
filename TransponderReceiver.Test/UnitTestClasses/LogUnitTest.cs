@@ -30,9 +30,12 @@ namespace TransponderReceiver.Test.UnitTestClasses
         {
             log.Write(level, message);   
             // locate file and check for msg
-            if(level == LogLevel.CRITICAL){
-                var lines = File.ReadAllLines(Path.Combine(cfg.FilePath, cfg.FileName));
+            if(level == LogLevel.CRITICAL)
+            {
+                var path = Path.Combine(cfg.FilePath, cfg.FileName);
+                var lines = File.ReadAllLines(path);
                 Assert.That(lines.Contains(message), Is.True);
+                File.Delete(path);
             }
             Assert.That(true, Is.True);
         }
@@ -43,15 +46,8 @@ namespace TransponderReceiver.Test.UnitTestClasses
         public void TestLogBistandsPensel(LogLevel level, ConsoleColor ExpectedColor)
         {
             //  there is no way to test for current console color source: N-Unit forum. tryed Console.ForegroundColor = ExpectedColor
-            try
-            {       
-                log.FormatConsole(level);
-                Assert.IsTrue(true);
-            }
-            catch
-            {
-                Assert.IsFalse(true);
-            }
+            log.FormatConsole(level);
+            Assert.IsTrue(true);
         }
     }
 }
