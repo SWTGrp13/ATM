@@ -42,6 +42,47 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That(Calculate.isInValidSpace(Factory.GetPlane(x + Time)), Is.False);
         }
 
+        [TestCase("KAT130;90045;12932;21000;", 5)] // DateTime Invalid
+        [TestCase("KAT130;90045;12932;21000;", 3)] // DateTime Invalid
+        public void TestTimeIsExceeded(string eventdata, int diff)
+        {
+            var TimeSpan = new DateTime().Add(new TimeSpan(diff, 0, 0)).ToString("yyyyMMddHHmmssfff");
+            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(eventdata + TimeSpan)), Is.False);
+        }
+        [TestCase("XYZ987;25059;75654;4000;",0)]
+        public void TestTimeIsGood(string eventdata, int diff)
+        {
+            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(eventdata + Time)), Is.True);
+        }
+
+        [Test]
+        public void TestNoSeperation()
+        {
+            var planeOne = Factory.GetPlane("XYZ987;25059;75654;4000;");
+            var planeTwo = Factory.GetPlane("ATR423;39045;12932;14000;");
+            var planeTree = Factory.GetPlane("BCD123;10005;8890;12000;");
+            var listof = new List<IObserver>();
+            listof.Add(planeTwo);
+            listof.Add(planeTree);
+            var result = (Calculate.CalculateMetrixes(planeOne, listof));
+            int res = result.Count;
+            Assert.That((res == 0),Is.True);
+        }
+
+        public void TestIsSeperations()
+        {
+            var planeOne = Factory.GetPlane("XYZ987;25059;75654;4000;");
+            var planeTwo = Factory.GetPlane("ATR423;25059;12932;14000;");
+            var planeTree = Factory.GetPlane("BCD123;10005;8890;12000;");
+            var listof = new List<IObserver>();
+            listof.Add(planeTwo);
+            listof.Add(planeTree);
+            var result = (Calculate.CalculateMetrixes(planeOne, listof));
+            int res = result.Count;
+            Assert.That((res == 0), Is.False);
+        }
+
+
         [TestCase("ATR423;90045;12932;14000;20151006213456789")] // Time invalid
         [TestCase("ATR423;90045;12932;14000;20201006213456789")] // Time invalid
         [TestCase("ATR423;90045;12932;14000;20161006213456789")] // Time invalid

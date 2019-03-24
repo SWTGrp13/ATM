@@ -20,3 +20,15 @@ C:\Users\mikke\source\repos\ATM\TransponderReceiver.Test\obj\Debug\TransponderRe
 C:\Users\mikke\source\repos\ATM\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.csproj.CopyComplete
 C:\Users\mikke\source\repos\ATM\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.dll
 C:\Users\mikke\source\repos\ATM\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.pdb
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\bin\Debug\TransponderReceiver.Test.dll
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\bin\Debug\TransponderReceiver.Test.pdb
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\bin\Debug\nunit.framework.dll
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\bin\Debug\TransponderReceiverLib.dll
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\bin\Debug\TransponderReceiverLib.pdb
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\bin\Debug\nunit.framework.pdb
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\bin\Debug\nunit.framework.xml
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.csprojAssemblyReference.cache
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.csproj.CoreCompileInputs.cache
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.csproj.CopyComplete
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.dll
+C:\Users\marti\Documents\4.Semester\SWT\Air Traffic Monitor\TransponderReceiver.Test\obj\Debug\TransponderReceiver.Test.pdb

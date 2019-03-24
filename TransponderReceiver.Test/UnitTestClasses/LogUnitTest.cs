@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +13,12 @@ namespace TransponderReceiver.Test.UnitTestClasses
     [TestFixture]
     class LogUnitTest
     {
-
+        private FileConfig cfg;
         private FlightLog log;
         [SetUp]
         public void SetUp()
         {
-            FileConfig cfg = new FileConfig("testFixture.txt", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            cfg = new FileConfig("testFixtureGrp13.txt", System.IO.Path.GetTempPath());
             log = new FlightLog(cfg);
         }
     
@@ -28,6 +29,15 @@ namespace TransponderReceiver.Test.UnitTestClasses
         public void TestLogConfig(LogLevel level, string message)
         {
             log.Write(level, message);   
+            // locate file and check for msg
+            if(level == LogLevel.CRITICAL)
+            {
+                var path = Path.Combine(cfg.FilePath, cfg.FileName);
+                var lines = File.ReadAllLines(path);
+                Assert.That(lines.Contains(message), Is.True);
+                File.Delete(path);
+            }
+            Assert.That(true, Is.True);
         }
 
         [TestCase(LogLevel.WARNING,ConsoleColor.DarkYellow)]
@@ -35,16 +45,9 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [TestCase(LogLevel.CRITICAL, ConsoleColor.Red)]
         public void TestLogBistandsPensel(LogLevel level, ConsoleColor ExpectedColor)
         {
-            //  there is no way to test for current console color source: N-Unit forum. tryed Console.ForegroundColor ExpectedColor
-            try
-            {       
-                log.FormatConsole(level);
-                Assert.IsTrue(true);
-            }
-            catch
-            {
-                Assert.IsFalse(true);
-            }
+            //  there is no way to test for current console color source: N-Unit forum. tryed Console.ForegroundColor = ExpectedColor
+            log.FormatConsole(level);
+            Assert.IsTrue(true);
         }
     }
 }
