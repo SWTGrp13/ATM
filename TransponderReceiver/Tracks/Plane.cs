@@ -52,9 +52,9 @@ namespace TransponderReceiverLib.Tracks
                 Velocity = Calculate.FindVelocity(this);
                 Degrees = Calculate.FindDegree(this);
             }
-            catch (Exception e) 
+            catch  
             {
-                throw new PlaneDataException(1, "Invalid Data String: " + e.Message);
+              //  throw new PlaneDataException(1, "Invalid Data String: " + e.Message);
             }
         }
 
@@ -77,11 +77,4 @@ namespace TransponderReceiverLib.Tracks
         }
     }
 
-    internal class PlaneDataException : Exception
-    {
-        public PlaneDataException(int i, string s)
-        {
-           
-        }
-    }
 }
