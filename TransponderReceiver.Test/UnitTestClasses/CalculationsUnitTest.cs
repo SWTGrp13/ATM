@@ -49,10 +49,20 @@ namespace TransponderReceiver.Test.UnitTestClasses
             var TimeSpan = new DateTime().Add(new TimeSpan(diff, 0, 0)).ToString("yyyyMMddHHmmssfff");
             Assert.That(Calculate.isInValidSpace(Factory.GetPlane(eventdata + TimeSpan)), Is.False);
         }
+
+
         [TestCase("XYZ987;25059;75654;4000;",0)]
         public void TestTimeIsGood(string eventdata, int diff)
         {
             Assert.That(Calculate.isInValidSpace(Factory.GetPlane(eventdata + Time)), Is.True);
+        }
+
+        [TestCase("ATR423;90045;12932;14000;20151006213456789")] // Time invalid
+        [TestCase("ATR423;90045;12932;14000;20201006213456789")] // Time invalid
+        [TestCase("ATR423;90045;12932;14000;20161006213456789")] // Time invalid
+        public void TestIsInValidSpace_TimeFalse(string x)
+        {
+            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(x)), Is.False);
         }
 
         [Test]
@@ -83,15 +93,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         }
 
 
-        [TestCase("ATR423;90045;12932;14000;20151006213456789")] // Time invalid
-        [TestCase("ATR423;90045;12932;14000;20201006213456789")] // Time invalid
-        [TestCase("ATR423;90045;12932;14000;20161006213456789")] // Time invalid
-        public void TestIsInValidSpace_TimeFalse(string x)
-        {
-            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(x)), Is.False);
-        }
-
-    //Test of FindDregee
+        //Test of FindDregee
 
         [TestCase("KAT130;0;0;21000;20161006213456789", "KAT130;0;0;21000;20161006213456789", 0)]
         [TestCase("KAT130;6436;33560;21000;20161006213456789", "KAT130;6538;33540;21000;20161006213456789", 349)]
