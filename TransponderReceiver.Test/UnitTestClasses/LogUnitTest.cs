@@ -22,7 +22,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
             log = new FlightLog(cfg);
         }
     
-        [Test]
+     
         [TestCase(LogLevel.NORMAL,"NORMAL")]
         [TestCase(LogLevel.WARNING, "WARNING")]
         [TestCase(LogLevel.CRITICAL, "TING_FLYVER_IND_I_TING")]
