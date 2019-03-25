@@ -53,6 +53,7 @@
     <Compile Include="UnitTestClasses\CalculationsUnitTest.cs" />
     <Compile Include="UnitTestClasses\FactoryUnitTest.cs" />
     <Compile Include="UnitTestClasses\LogUnitTest.cs" />
+    <Compile Include="UnitTestClasses\TowerUnitTest.cs" />
     <Compile Include="UnitTestClasses\TracksUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
