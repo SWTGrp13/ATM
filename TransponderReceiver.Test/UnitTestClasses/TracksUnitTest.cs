@@ -53,7 +53,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That(uut.OldXPos, Is.EqualTo(50001));
             Assert.That(uut.OldYPos, Is.EqualTo(50001));
             Assert.That(uut.Altitude, Is.EqualTo(10000));
-            Assert.That(uut.OldTimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(OriginalTimeString));
+            Assert.That(uut.OldTimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(tid));
 
 
             //Sets new variables
@@ -64,12 +64,12 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That(uut.XPos, Is.EqualTo(OriginalXpos));
             Assert.That(uut.YPos, Is.EqualTo(OritignalYpos));
             Assert.That(uut.Altitude, Is.EqualTo(OriginalAltitude));
-            Assert.That(uut.TimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(OriginalTimeString));
+            Assert.That(uut.TimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(tid));
 
             Assert.That(uut.OldXPos, Is.EqualTo(49999));
             Assert.That(uut.OldYPos, Is.EqualTo(49999));
             Assert.That(uut.Altitude, Is.EqualTo(10000));
-            Assert.That(uut.OldTimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(OriginalTimeString));
+            Assert.That(uut.OldTimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(tid));
         }
 
         //Identify test - Den her virker lidt underlig at teste
