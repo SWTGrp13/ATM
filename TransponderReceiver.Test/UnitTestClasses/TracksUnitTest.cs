@@ -25,7 +25,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [SetUp]
         public void SetUp()
         {
-            OriginalTimeString = DateTime.Now.ToString();
+            OriginalTimeString = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             uut = TransponderReceiverLib.Factory.GetPlane("AAA111;50000;50000;10000;"+ OriginalTimeString);
             OriginalXpos = uut.XPos;
             OritignalYpos = uut.YPos;
@@ -36,7 +36,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [Test]
         public void Update_Test()
         {
-            string tid = DateTime.Now.ToString();
+            string tid = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             uut.Update("AAA111;50001;50001;10000;" + tid);
 
             //Is true test +1 
