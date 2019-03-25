@@ -68,9 +68,9 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [Test]
         public void TestNoSeperation()
         {
-            var planeOne = Factory.GetPlane("XYZ987;25059;75654;4000;");
-            var planeTwo = Factory.GetPlane("ATR423;39045;12932;14000;");
-            var planeTree = Factory.GetPlane("BCD123;10005;8890;12000;");
+            var planeOne = Factory.GetPlane("XYZ987;25059;75654;4000;" + Time);
+            var planeTwo = Factory.GetPlane("ATR423;39045;12932;14000;" + Time);
+            var planeTree = Factory.GetPlane("BCD123;10005;8890;12000;" + Time);
             var listof = new List<IObserver>();
             listof.Add(planeTwo);
             listof.Add(planeTree);
@@ -79,17 +79,18 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That((res == 0),Is.True);
         }
 
+        [Test]
         public void TestIsSeperations()
         {
-            var planeOne = Factory.GetPlane("XYZ987;25059;75654;4000;");
-            var planeTwo = Factory.GetPlane("ATR423;25059;12932;14000;");
-            var planeTree = Factory.GetPlane("BCD123;10005;8890;12000;");
+            var planeOne = Factory.GetPlane("XYZ987;25059;75654;4000;" + Time);
+            var planeTwo = Factory.GetPlane("ATR423;25059;75654;14000;" + Time);
+            var planeTree = Factory.GetPlane("BCD123;25059;8890;12000;" + Time);
             var listof = new List<IObserver>();
             listof.Add(planeTwo);
             listof.Add(planeTree);
             var result = (Calculate.CalculateMetrixes(planeOne, listof));
             int res = result.Count;
-            Assert.That((res == 0), Is.False);
+            Assert.That((res > 0), Is.True);
         }
 
 

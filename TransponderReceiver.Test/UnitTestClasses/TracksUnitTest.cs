@@ -25,7 +25,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [SetUp]
         public void SetUp()
         {
-            OriginalTimeString = DateTime.Now.ToString();
+            OriginalTimeString = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             uut = TransponderReceiverLib.Factory.GetPlane("AAA111;50000;50000;10000;"+ OriginalTimeString);
             OriginalXpos = uut.XPos;
             OritignalYpos = uut.YPos;
@@ -36,14 +36,14 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [Test]
         public void Update_Test()
         {
-            string tid = DateTime.Now.ToString();
+            string tid = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             uut.Update("AAA111;50001;50001;10000;" + tid);
 
             //Is true test +1 
             Assert.That(uut.OldXPos, Is.EqualTo(OriginalXpos));
             Assert.That(uut.OldYPos, Is.EqualTo(OritignalYpos));
             Assert.That(uut.Altitude, Is.EqualTo(OriginalAltitude));
-            Assert.That(uut.OldTimeStamp.ToString(), Is.EqualTo(OriginalTimeString));
+            Assert.That(uut.OldTimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(OriginalTimeString));
 
             //Sets new variables
             uut.Update(("AAA111;49999;49999;10000;" + tid)); //Ved ikke om den her er funktionelt nødvendig, da et begge to bare sætter værdier :P
@@ -53,7 +53,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That(uut.OldXPos, Is.EqualTo(50001));
             Assert.That(uut.OldYPos, Is.EqualTo(50001));
             Assert.That(uut.Altitude, Is.EqualTo(10000));
-            Assert.That(uut.OldTimeStamp.ToString(), Is.EqualTo(OriginalTimeString));
+            Assert.That(uut.OldTimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(tid));
 
 
             //Sets new variables
@@ -64,12 +64,12 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That(uut.XPos, Is.EqualTo(OriginalXpos));
             Assert.That(uut.YPos, Is.EqualTo(OritignalYpos));
             Assert.That(uut.Altitude, Is.EqualTo(OriginalAltitude));
-            Assert.That(uut.TimeStamp.ToString(), Is.EqualTo(OriginalTimeString));
+            Assert.That(uut.TimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(tid));
 
             Assert.That(uut.OldXPos, Is.EqualTo(49999));
             Assert.That(uut.OldYPos, Is.EqualTo(49999));
             Assert.That(uut.Altitude, Is.EqualTo(10000));
-            Assert.That(uut.OldTimeStamp.ToString(), Is.EqualTo(OriginalTimeString));
+            Assert.That(uut.OldTimeStamp.ToString("yyyyMMddHHmmssfff"), Is.EqualTo(tid));
         }
 
         //Identify test - Den her virker lidt underlig at teste

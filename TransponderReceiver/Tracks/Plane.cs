@@ -47,14 +47,13 @@ namespace TransponderReceiverLib.Tracks
                 XPos = Convert.ToInt32(planeData[1]);
                 YPos = Convert.ToInt32(planeData[2]);
                 Altitude = Convert.ToInt32(planeData[3]);
-                //TimeStamp = DateTime.Now;
                 TimeStamp = DateTime.ParseExact(planeData[4], "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
                 Velocity = Calculate.FindVelocity(this);
                 Degrees = Calculate.FindDegree(this);
             }
-            catch 
+            catch  
             {
-                //throw new PlaneDataException(1, "Invalid Data String: " + e.Message);
+              //  throw new PlaneDataException(1, "Invalid Data String: " + e.Message);
             }
         }
 
@@ -77,11 +76,4 @@ namespace TransponderReceiverLib.Tracks
         }
     }
 
-    internal class PlaneDataException : Exception
-    {
-        public PlaneDataException(int i, string s)
-        {
-           
-        }
-    }
 }
