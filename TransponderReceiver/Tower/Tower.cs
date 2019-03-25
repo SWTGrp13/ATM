@@ -50,6 +50,11 @@ namespace TransponderReceiverLib.Tower
             }
         }
 
+        public Subject GetTracks()
+        {
+            return ListOfTracks;
+        }
+
         public void Render()
         {
             var stack = ListOfTracks.getInstances().ToList();
