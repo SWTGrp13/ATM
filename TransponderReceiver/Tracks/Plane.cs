@@ -47,7 +47,6 @@ namespace TransponderReceiverLib.Tracks
                 XPos = Convert.ToInt32(planeData[1]);
                 YPos = Convert.ToInt32(planeData[2]);
                 Altitude = Convert.ToInt32(planeData[3]);
-                //TimeStamp = DateTime.Now;
                 TimeStamp = DateTime.ParseExact(planeData[4], "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
                 Velocity = Calculate.FindVelocity(this);
                 Degrees = Calculate.FindDegree(this);

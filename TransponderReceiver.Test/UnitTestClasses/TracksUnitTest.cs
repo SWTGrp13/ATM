@@ -19,13 +19,15 @@ namespace TransponderReceiver.Test.UnitTestClasses
         private int OritignalYpos;
         private int OriginalAltitude;
         private string OriginalTimeString;
+        private DateTime OriginalTime;
 
 
         // SetUp 
         [SetUp]
         public void SetUp()
         {
-            OriginalTimeString = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            OriginalTime = DateTime.Now;
+            OriginalTimeString = OriginalTime.ToString("yyyyMMddHHmmssfff");
             uut = TransponderReceiverLib.Factory.GetPlane("AAA111;50000;50000;10000;"+ OriginalTimeString);
             OriginalXpos = uut.XPos;
             OritignalYpos = uut.YPos;
@@ -43,7 +45,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That(uut.OldXPos, Is.EqualTo(OriginalXpos));
             Assert.That(uut.OldYPos, Is.EqualTo(OritignalYpos));
             Assert.That(uut.Altitude, Is.EqualTo(OriginalAltitude));
-            Assert.That(uut.OldTimeStamp.ToString(), Is.EqualTo(OriginalTimeString));
+            Assert.That(uut.OldTimeStamp.ToString(), Is.EqualTo(OriginalTime.ToString()));
 
             //Sets new variables
             uut.Update(("AAA111;49999;49999;10000;" + tid)); //Ved ikke om den her er funktionelt nødvendig, da et begge to bare sætter værdier :P
