@@ -1,0 +1,23 @@
+participant TransponderReceiver
+participant Program
+participant Factory
+participant FlightLog
+participant Tower
+participant Calculations
+
+TransponderReceiver-->(1)Program:onData()
+Program->Tower:handleData(Track)
+par if not exsists 
+Tower->Factory:create Track 
+Factory->Factory:Create Track
+Factory->Tower:Return Track
+thread if exsists
+Tower->Tower:Update Track data
+end
+Tower->Calculations:Validate Track
+par if separation flag
+Tower->FlightLog:Loglevel.CRITICAL
+thread else 
+Tower->FlightLog:Loglevel.NORMAL
+end
+
