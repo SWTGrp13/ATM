@@ -31,7 +31,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [Test]
         public void TestPlaneExpectsInstanceAlike()
         {
-            Assert.IsInstanceOf<ITrack>(Factory.GetPlane("XYZ987;25059;75654;4000;20151006213456789"));
+            Assert.IsInstanceOf<ITrack>(Factory.GetTrack("XYZ987;25059;75654;4000;20151006213456789"));
         }
         [Test]
         public void TestSubjectExpectsInstanceAlike()

@@ -9,6 +9,7 @@ using NUnit.Framework;
 using TransponderReceiverLib;
 using TransponderReceiverLib.Tracks;
 using TransponderReceiverLib.Calculations;
+using TransponderReceiverLib.Validation;
 
 
 namespace TransponderReceiver.Test.UnitTestClasses
@@ -27,7 +28,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [TestCase("MIW248;2549;75654;501;")]
         public void TestisInValidSpace_True(string x)
         {
-            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(x + Time)), Is.True);
+            Assert.That(new Validator().isInValidSpace(Factory.GetTrack(x + Time)), Is.True);
         }
 
         [TestCase("ATR423;90045;12932;14000;")] // XPos Invalid
@@ -39,7 +40,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [TestCase("KAT130;90045;90890;21000;")] // All Invalid
         public void TestisInvalidSpace_PosFalse(string x)
         {
-            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(x + Time)), Is.False);
+            Assert.That(new Validator().isInValidSpace(Factory.GetTrack(x + Time)), Is.False);
         }
 
         [TestCase("KAT130;70045;12932;21000;", 5)] // DateTime Invalid
@@ -47,32 +48,32 @@ namespace TransponderReceiver.Test.UnitTestClasses
         public void TestTimeIsExceeded(string eventdata, int diff)
         {
             var TimeSpan = new DateTime().Add(new TimeSpan(diff, 0, 0)).ToString("yyyyMMddHHmmssfff");
-            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(eventdata + TimeSpan)), Is.False);
+            Assert.That(new Validator().isInValidSpace(Factory.GetTrack(eventdata + TimeSpan)), Is.False);
         }
 
 
         [TestCase("XYZ987;25059;75654;4000;",0)]
         public void TestTimeIsGood(string eventdata, int diff)
         {
-            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(eventdata + Time)), Is.True);
+            Assert.That(new Validator().isInValidSpace(Factory.GetTrack(eventdata + Time)), Is.True);
         }
 
         [TestCase("ATR423;70045;12932;14000;20151006213456789")] // Time invalid
         public void TestIsInValidSpace_TimeFalse(string x)
         {
-            Assert.That(Calculate.isInValidSpace(Factory.GetPlane(x)), Is.False);
+            Assert.That(new Validator().isInValidSpace(Factory.GetTrack(x)), Is.False);
         }
 
         [Test]
         public void TestNoSeperation()
         {
-            var planeOne = Factory.GetPlane("XYZ987;25059;75654;4000;" + Time);
-            var planeTwo = Factory.GetPlane("ATR423;39045;12932;14000;" + Time);
-            var planeTree = Factory.GetPlane("BCD123;10005;8890;12000;" + Time);
+            var planeOne = Factory.GetTrack("XYZ987;25059;75654;4000;" + Time);
+            var planeTwo = Factory.GetTrack("ATR423;39045;12932;14000;" + Time);
+            var planeTree = Factory.GetTrack("BCD123;10005;8890;12000;" + Time);
             var listof = new List<IObserver>();
             listof.Add(planeTwo);
             listof.Add(planeTree);
-            var result = (Calculate.CalculateMetrixes(planeOne, listof));
+            var result = (new Calculate().CalculateMetrixes(planeOne, listof));
             int res = result.Count;
             Assert.That((res == 0),Is.True);
         }
@@ -80,13 +81,13 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [Test]
         public void TestIsSeperations()
         {
-            var planeOne = Factory.GetPlane("XYZ987;25059;75654;4000;" + Time);
-            var planeTwo = Factory.GetPlane("ATR423;25059;75654;14000;" + Time);
-            var planeTree = Factory.GetPlane("BCD123;25059;8890;12000;" + Time);
+            var planeOne = Factory.GetTrack("XYZ987;25059;75654;4000;" + Time);
+            var planeTwo = Factory.GetTrack("ATR423;25059;75654;14000;" + Time);
+            var planeTree = Factory.GetTrack("BCD123;25059;8890;12000;" + Time);
             var listof = new List<IObserver>();
             listof.Add(planeTwo);
             listof.Add(planeTree);
-            var result = (Calculate.CalculateMetrixes(planeOne, listof));
+            var result = (new Calculate().CalculateMetrixes(planeOne, listof));
             int res = result.Count;
             Assert.That((res > 0), Is.True);
         }
@@ -101,8 +102,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         {
             Track testPlane = new Track(oldData);
             testPlane.Update(newData);
-
-            Assert.That(Calculate.FindDegree(testPlane), Is.EqualTo(degree));
+            Assert.That(new Calculate().FindDegree(testPlane), Is.EqualTo(degree));
         }
 
     }

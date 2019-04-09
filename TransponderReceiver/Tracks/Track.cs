@@ -22,6 +22,7 @@ namespace TransponderReceiverLib.Tracks
         bool ConditionCheck { get; set; }
         DateTime TimeStamp { get; set; }
         DateTime OldTimeStamp { get; set; }
+        bool isInValidSpace();
     }
 
     public class Track : ITrack
@@ -48,8 +49,8 @@ namespace TransponderReceiverLib.Tracks
                 YPos = Convert.ToInt32(planeData[2]);
                 Altitude = Convert.ToInt32(planeData[3]);
                 TimeStamp = DateTime.ParseExact(planeData[4], "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
-                Velocity = Calculate.FindVelocity(this);
-                Degrees = Calculate.FindDegree(this);
+                Velocity = new Calculate().FindVelocity(this);
+                Degrees = new Calculate().FindDegree(this);
             }
             catch  
             {
@@ -73,6 +74,28 @@ namespace TransponderReceiverLib.Tracks
         public string Identify()
         {
             return Tag;
+        }
+
+        public bool isInValidSpace()
+        {
+            if (((int)XPos < 0) || ((int)XPos > 80000))
+            {
+                return false;
+            }
+            if (((int)YPos < 0) || ((int)YPos > 80000))
+            {
+                return false;
+            }
+            if (((int)Altitude <= 500) || ((int)Altitude >= 20000))
+            {
+                return false;
+            }
+            if ((DateTime.Now.Subtract(TimeStamp).TotalSeconds) >= 2)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 

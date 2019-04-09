@@ -7,7 +7,6 @@ namespace TransponderReceiverLib.Log
     {
         public string FileName { get; }
         public string FilePath { get; }
-
         public FileConfig(string FileName, string FilePath)
         {
             this.FileName = FileName;
