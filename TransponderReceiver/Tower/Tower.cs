@@ -73,10 +73,10 @@ namespace TransponderReceiverLib.Tower
                 }
                 else
                 {
-                    if (!collisionTracker_.Any(t => t.Tag == plane.Identify()))
+                    if (!collisionTracker_.Any(t => t.Tag == plane.Identify() && t.CollisionList == string.Join(", ", collide.ToArray())))
                     {
                         verbose = true;
-                        collisionTracker_.Add(new CollisionTracker() { Tag = plane.Identify() });
+                        collisionTracker_.Add(new CollisionTracker() { Tag = plane.Identify(), CollisionList = string.Join(", ", collide.ToArray()) });
                     }
                 }
                 Render(collide, plane,verbose);

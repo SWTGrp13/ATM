@@ -9,5 +9,6 @@ namespace TransponderReceiverLib.Tower
     public struct CollisionTracker
     {
         public string Tag { get; set; }
+        public string CollisionList { get; set; }
     }
 }
