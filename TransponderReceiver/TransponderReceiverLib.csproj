@@ -50,7 +50,7 @@
     <Compile Include="Log\FlightLog.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Tracks\Observer.cs" />
-    <Compile Include="Tracks\Plane.cs" />
+    <Compile Include="Tracks\Track.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tower\Subject.cs" />
     <Compile Include="Tower\Tower.cs" />

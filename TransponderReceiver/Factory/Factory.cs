@@ -21,7 +21,7 @@ namespace TransponderReceiverLib
             return new FlightLog(cfg);
         }
 
-        public static Track GetPlane(string EncodedMessage)
+        public static Track GetTrack(string EncodedMessage)
         {
             return new Track(EncodedMessage);
         }

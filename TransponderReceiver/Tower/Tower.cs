@@ -27,7 +27,7 @@ namespace TransponderReceiverLib.Tower
 
         public void Add(string encodedTransponderMessage)
         {
-            var plane = Factory.GetPlane(encodedTransponderMessage);
+            var plane = Factory.GetTrack(encodedTransponderMessage);
               
             ListOfTracks.attach(plane);
             
@@ -39,7 +39,6 @@ namespace TransponderReceiverLib.Tower
                     ListOfTracks.getInstance(plane.Tag).Update(encodedTransponderMessage);
                 }
                 // check for hanging data.
-                //.FindAll(a => a.Identify() != plane.Tag)
                 foreach (var currentPlane in ListOfTracks.getInstances().ToList())
                 {
                     var p = currentPlane as Track;

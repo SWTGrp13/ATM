@@ -20,13 +20,12 @@ namespace TransponderReceiver.Test.UnitTestClasses
         private int OriginalAltitude;
         private string OriginalTimeString;
 
-
         // SetUp 
         [SetUp]
         public void SetUp()
         {
             OriginalTimeString = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            uut = TransponderReceiverLib.Factory.GetPlane("AAA111;50000;50000;10000;"+ OriginalTimeString);
+            uut = TransponderReceiverLib.Factory.GetTrack("AAA111;50000;50000;10000;"+ OriginalTimeString);
             OriginalXpos = uut.XPos;
             OritignalYpos = uut.YPos;
             OriginalAltitude = uut.Altitude;
