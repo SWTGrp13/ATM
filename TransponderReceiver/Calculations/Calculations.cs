@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TransponderReceiverLib.Tracks;
-
-
 
 namespace TransponderReceiverLib.Calculations
 {
-    public static class Calculate
+    public class Calculate : ICalculate
     {
-        public static double FindDegree(ITrack plane)
+        public double FindDegree(ITrack plane)
         {
             var y = plane.YPos - plane.OldYPos;
             var x = plane.XPos - plane.OldXPos;
@@ -25,7 +20,7 @@ namespace TransponderReceiverLib.Calculations
             return Convert.ToInt32(degree);
         }
 
-        public static double FindVelocity(ITrack plane)
+        public double FindVelocity(ITrack plane)
         {
             var y = Math.Abs(plane.YPos) - Math.Abs(plane.OldYPos);
             var x = Math.Abs(plane.XPos) - Math.Abs(plane.OldXPos);
@@ -35,29 +30,8 @@ namespace TransponderReceiverLib.Calculations
             return Convert.ToInt32(velocity);
         }
 
-        public static bool isInValidSpace(ITrack sub)
-        {
-            if (((int)sub.XPos < 0) || ((int)sub.XPos > 80000))
-            {
-                return false;
-            }
-            if (((int)sub.YPos < 0) || ((int)sub.YPos > 80000))
-            {
-                return false;
-            }
-            if (((int)sub.Altitude <= 500) || ((int)sub.Altitude >= 20000))
-            {
-                return false;
-            }
-            if ((DateTime.Now.Subtract(sub.TimeStamp).TotalSeconds) >= 2)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        public static List<string> CalculateMetrixes(ITrack CurrentPlane, List<IObserver> PlanesList)
+       
+        public List<string> CalculateMetrixes(ITrack CurrentPlane, List<IObserver> PlanesList)
         {
             
             List<string> result = new List<string>();

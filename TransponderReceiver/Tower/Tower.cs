@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TransponderReceiverLib.Log;
 using TransponderReceiverLib.Calculations;
 using TransponderReceiverLib.Tracks;
+using TransponderReceiverLib.Validation;
 
 namespace TransponderReceiverLib.Tower
 {
@@ -33,7 +34,7 @@ namespace TransponderReceiverLib.Tower
             lock (ListOfTracks)
             {
                 // plane/track is in valid airspace.
-                if (Calculate.isInValidSpace(plane))
+                if (new Validator().isInValidSpace(plane))
                 {
                     ListOfTracks.getInstance(plane.Tag).Update(encodedTransponderMessage);
                 }
@@ -42,7 +43,7 @@ namespace TransponderReceiverLib.Tower
                 foreach (var currentPlane in ListOfTracks.getInstances().ToList())
                 {
                     var p = currentPlane as Track;
-                    if (!Calculate.isInValidSpace(p))
+                    if (!new Validator().isInValidSpace(p))
                     {
                         ListOfTracks.detach(p);
                     }
@@ -61,7 +62,7 @@ namespace TransponderReceiverLib.Tower
             foreach (var _plane in stack)
             {
                 var plane = _plane as Track;
-                List<string> collide = Calculate.CalculateMetrixes(plane, stack.FindAll(p => p.Identify() != plane.Tag));
+                List<string> collide = new Calculate().CalculateMetrixes(plane, stack.FindAll(p => p.Identify() != plane.Tag));
 
                 if (collide.Count > 0 && plane.ConditionCheck == false)
                 {
