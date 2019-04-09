@@ -17,12 +17,14 @@ namespace TransponderReceiverLib.Tower
         private static Subject ListOfTracks;
         private FlightLog Log;
         private bool verbose;
+        private List<CollisionTracker> collisionTracker_;
 
-        public AirTrafficTower(FlightLog Log, Subject Subject, bool verbose = true)
+        public AirTrafficTower(FlightLog Log, Subject Subject, List<CollisionTracker> tracker, bool verbose = true)
         {
             ListOfTracks = Subject;
             this.Log = Log;
             this.verbose = verbose;
+            collisionTracker_ = tracker;
         }
 
         public void Add(string encodedTransponderMessage)
@@ -55,28 +57,42 @@ namespace TransponderReceiverLib.Tower
             return ListOfTracks;
         }
 
-        public void Render()
+        public void CollisionValidate()
         {
             var stack = ListOfTracks.getInstances().ToList();
+            bool verbose;
             foreach (var _plane in stack)
             {
+                verbose = false;
                 var plane = _plane as Track;
-                List<string> collide = new Calculate().CalculateMetrixes(plane, stack.FindAll(p => p.Identify() != plane.Tag));
-
-                if (collide.Count > 0 && plane.ConditionCheck == false)
+                var collide = new Calculate().CalculateMetrixes(plane, stack.FindAll(p => p.Identify() != plane.Identify()));
+                if (collide.Count == 0)
                 {
-                    plane.ConditionCheck = true;
-                    Log.Write(LogLevel.CRITICAL, $"WARNING: {plane.Tag} is colliding with { String.Join(", ", collide.ToArray()) }, { plane.TimeStamp }");
+                    verbose = false;
+                    collisionTracker_.RemoveAll(t => t.Tag == plane.Identify());
                 }
                 else
                 {
-                    plane.ConditionCheck = false;
-                    if (verbose)
+                    if (!collisionTracker_.Any(t => t.Tag == plane.Identify()))
                     {
-                        Log.Write(LogLevel.NORMAL, $"Plane: {plane.Tag} \tAltitude: {plane.Altitude}\t Cords: {plane.XPos},{plane.YPos} \tTs: {plane.TimeStamp} - {DateTime.Now.Subtract(plane.TimeStamp).TotalSeconds} \t Velocity: {Math.Round(plane.Velocity, 2)} m/s \t Degree: {plane.Degrees} deg");
+                        verbose = true;
+                        collisionTracker_.Add(new CollisionTracker() { Tag = plane.Identify() });
                     }
                 }
+                Render(collide, plane,verbose);
             }
+        }
+
+        public void Render(List<string> status, Track track, bool verbose)
+        {
+            if (verbose)
+            {
+                Log.Write(LogLevel.CRITICAL,
+                    $"WARNING: {track.Tag} is colliding with {string.Join(", ", status.ToArray())}, {track.TimeStamp}");
+            }
+           
+            Log.Write(LogLevel.NORMAL,
+                $"Plane: {track.Tag} \tAltitude: {track.Altitude}\t Cords: {track.XPos},{track.YPos} \tTs: {track.TimeStamp} \t Velocity: {Math.Round(track.Velocity, 2)} m/s \t Degree: {track.Degrees} deg");
         }
     }
 }

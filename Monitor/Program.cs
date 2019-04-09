@@ -19,9 +19,11 @@ namespace Monitor
         private static FileConfig cfg;
         private static FlightLog Log;
         private static Subject TrackList;
-
+        private static List<CollisionTracker> tracker;
         static void Main(string[] args)
         {
+
+            tracker = Factory.GetTracker();
 
             cfg = Factory.GetFileCofig("AirTrafficMonitorLog.txt", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
 
@@ -29,7 +31,7 @@ namespace Monitor
 
             TrackList = Factory.GetSubject();
 
-            TrafficMonitor = new AirTrafficTower(Log, TrackList,true);
+            TrafficMonitor = new AirTrafficTower(Log, TrackList, tracker,true);
 
             receiver.TransponderDataReady += ReceiverOnTransponderDataReady;
 
@@ -45,7 +47,7 @@ namespace Monitor
             {
                 TrafficMonitor.Add(data);
             }
-            TrafficMonitor.Render();
+            TrafficMonitor.CollisionValidate();
         }
 
     }

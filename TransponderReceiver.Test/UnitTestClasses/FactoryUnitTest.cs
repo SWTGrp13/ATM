@@ -44,7 +44,8 @@ namespace TransponderReceiver.Test.UnitTestClasses
             FileConfig cfg = Factory.GetFileCofig("a", "b");
             FlightLog log = Factory.GetFlightLog(cfg);
             Subject ObserverList = Factory.GetSubject();
-            Assert.IsInstanceOf<AirTrafficTower>(Factory.GetTower(log,ObserverList));
+            List<CollisionTracker> tracker = new List<CollisionTracker>();
+            Assert.IsInstanceOf<AirTrafficTower>(Factory.GetTower(log,ObserverList, tracker));
         }
     }
 }

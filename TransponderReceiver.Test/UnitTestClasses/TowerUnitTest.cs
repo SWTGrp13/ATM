@@ -19,7 +19,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         private static FileConfig cfg;
         private static FlightLog Log;
         private static Subject TrackList;
-
+        private static List<CollisionTracker> tracker = new List<CollisionTracker>();
         [SetUp]
         public void Setup()
         {
@@ -32,7 +32,9 @@ namespace TransponderReceiver.Test.UnitTestClasses
 
             TrackList = Factory.GetSubject();
 
-            _uut = new AirTrafficTower(Log, TrackList);
+
+
+            _uut = new AirTrafficTower(Log, TrackList, tracker);
         }
         
         static void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
@@ -80,7 +82,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
             // Act: Trigger the fake object to execute event invocation
             _fakeTransponderReceiver.TransponderDataReady
                 += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
-            _uut.Render();
+            _uut.CollisionValidate();
 
             Assert.AreEqual(2, _uut.GetTracks().getInstances().Count);
 
@@ -103,7 +105,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
             // Act: Trigger the fake object to execute event invocation
             _fakeTransponderReceiver.TransponderDataReady
                 += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
-            _uut.Render();
+            _uut.CollisionValidate();
 
             Assert.AreEqual(2, _uut.GetTracks().getInstances().Count);
 
@@ -124,7 +126,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
             // Act: Trigger the fake object to execute event invocation
             _fakeTransponderReceiver.TransponderDataReady
                 += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
-            _uut.Render();
+            _uut.CollisionValidate();
 
             Assert.AreEqual(2, _uut.GetTracks().getInstances().Count);
 
@@ -148,7 +150,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
             // Act: Trigger the fake object to execute event invocation
             _fakeTransponderReceiver.TransponderDataReady
                 += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
-            _uut.Render();
+            _uut.CollisionValidate();
 
             Assert.AreEqual(3, _uut.GetTracks().getInstances().Count);
 
