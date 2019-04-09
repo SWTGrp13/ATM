@@ -11,10 +11,10 @@ using TransponderReceiverLib.Tracks;
 namespace TransponderReceiver.Test.UnitTestClasses
 {
     [TestFixture]
-    class PlaneUnitTest
+    class TrackUnitTest
     {
         //Variables
-        private Plane uut;
+        private Track uut;
         private int OriginalXpos;
         private int OritignalYpos;
         private int OriginalAltitude;

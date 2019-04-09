@@ -99,7 +99,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [TestCase("KAT130;5356;47056;21000;20161006213456789", "KAT130;5415;47071;21000;20161006213456789", 14)]
         public void TestFindDegree(string oldData, string newData, int degree)
         {
-            Plane testPlane = new Plane(oldData);
+            Track testPlane = new Track(oldData);
             testPlane.Update(newData);
 
             Assert.That(Calculate.FindDegree(testPlane), Is.EqualTo(degree));

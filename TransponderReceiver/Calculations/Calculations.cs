@@ -11,7 +11,7 @@ namespace TransponderReceiverLib.Calculations
 {
     public static class Calculate
     {
-        public static double FindDegree(IPlane plane)
+        public static double FindDegree(ITrack plane)
         {
             var y = plane.YPos - plane.OldYPos;
             var x = plane.XPos - plane.OldXPos;
@@ -25,7 +25,7 @@ namespace TransponderReceiverLib.Calculations
             return Convert.ToInt32(degree);
         }
 
-        public static double FindVelocity(IPlane plane)
+        public static double FindVelocity(ITrack plane)
         {
             var y = Math.Abs(plane.YPos) - Math.Abs(plane.OldYPos);
             var x = Math.Abs(plane.XPos) - Math.Abs(plane.OldXPos);
@@ -35,7 +35,7 @@ namespace TransponderReceiverLib.Calculations
             return Convert.ToInt32(velocity);
         }
 
-        public static bool isInValidSpace(Plane sub)
+        public static bool isInValidSpace(ITrack sub)
         {
             if (((int)sub.XPos < 0) || ((int)sub.XPos > 80000))
             {
@@ -57,7 +57,7 @@ namespace TransponderReceiverLib.Calculations
             return true;
         }
 
-        public static List<string> CalculateMetrixes(IPlane CurrentPlane, List<IObserver> PlanesList)
+        public static List<string> CalculateMetrixes(ITrack CurrentPlane, List<IObserver> PlanesList)
         {
             
             List<string> result = new List<string>();
@@ -70,7 +70,7 @@ namespace TransponderReceiverLib.Calculations
 
             for (int i = 0; i < PlanesList.Count; i++)
             {
-                var plane = PlanesList[i] as Plane;
+                var plane = PlanesList[i] as Track;
                 int[] OtherPlaneCoordinates = { plane.XPos, plane.YPos };
                 double xLength = CurrentPlaneCoordinates[0] - OtherPlaneCoordinates[0];
                 double yLength = CurrentPlaneCoordinates[1] - OtherPlaneCoordinates[1];

@@ -9,7 +9,7 @@ using TransponderReceiverLib.Calculations;
 
 namespace TransponderReceiverLib.Tracks
 {
-    public interface IPlane : IObserver
+    public interface ITrack : IObserver
     {
         string Tag { get; set; }
         int XPos { get; set; }
@@ -24,7 +24,7 @@ namespace TransponderReceiverLib.Tracks
         DateTime OldTimeStamp { get; set; }
     }
 
-    public class Plane : IPlane
+    public class Track : ITrack
     {
         public string Tag { get; set; }
         public int XPos { get; set; }
@@ -57,7 +57,7 @@ namespace TransponderReceiverLib.Tracks
             }
         }
 
-        public Plane(string data)
+        public Track(string data)
         {
             ParseData(data);
         }

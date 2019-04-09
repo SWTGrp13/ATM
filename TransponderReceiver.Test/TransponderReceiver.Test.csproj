@@ -61,7 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TransponderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestClasses\CalculationsUnitTest.cs" />
     <Compile Include="UnitTestClasses\FactoryUnitTest.cs" />

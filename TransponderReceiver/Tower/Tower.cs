@@ -41,7 +41,7 @@ namespace TransponderReceiverLib.Tower
                 //.FindAll(a => a.Identify() != plane.Tag)
                 foreach (var currentPlane in ListOfTracks.getInstances().ToList())
                 {
-                    var p = currentPlane as Plane;
+                    var p = currentPlane as Track;
                     if (!Calculate.isInValidSpace(p))
                     {
                         ListOfTracks.detach(p);
@@ -60,7 +60,7 @@ namespace TransponderReceiverLib.Tower
             var stack = ListOfTracks.getInstances().ToList();
             foreach (var _plane in stack)
             {
-                var plane = _plane as Plane;
+                var plane = _plane as Track;
                 List<string> collide = Calculate.CalculateMetrixes(plane, stack.FindAll(p => p.Identify() != plane.Tag));
 
                 if (collide.Count > 0 && plane.ConditionCheck == false)

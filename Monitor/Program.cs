@@ -22,13 +22,6 @@ namespace Monitor
 
         static void Main(string[] args)
         {
-            /*
-            FlightLog log = new FlightLog(new FileConfig("test.txt", Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
-               
-            log.Write(LogLevel.WARNING, "warning..");
-            log.Write(LogLevel.CRITICAL, "danger..");
-            log.Write(LogLevel.NORMAL, "normal..");
-            */
 
             cfg = Factory.GetFileCofig("AirTrafficMonitorLog.txt", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
 
