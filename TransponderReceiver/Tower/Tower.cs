@@ -60,7 +60,7 @@ namespace TransponderReceiverLib.Tower
         public void CollisionValidate()
         {
             var stack = ListOfTracks.getInstances().ToList();
-            bool verbose;
+            bool verbose = false;
             foreach (var _plane in stack)
             {
                 verbose = false;

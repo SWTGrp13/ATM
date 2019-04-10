@@ -26,7 +26,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
             // Make a fake Transponder Data Receiver
             _fakeTransponderReceiver = Substitute.For<ITransponderReceiver>();
 
-            cfg = Factory.GetFileCofig($"UUT_GRP_13_TEST_2.txt", System.IO.Path.GetTempPath());
+            cfg = Factory.GetFileConfig($"UUT_GRP_13_TEST_2.txt", System.IO.Path.GetTempPath());
 
             Log = Factory.GetFlightLog(cfg);
 

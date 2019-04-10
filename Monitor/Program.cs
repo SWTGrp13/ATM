@@ -25,7 +25,7 @@ namespace Monitor
 
             tracker = Factory.GetTracker();
 
-            cfg = Factory.GetFileCofig("AirTrafficMonitorLog.txt", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            cfg = Factory.GetFileConfig("AirTrafficMonitorLog.txt", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
 
             Log = Factory.GetFlightLog(cfg);
 

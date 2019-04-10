@@ -18,13 +18,13 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [Test]
         public void TestFileConfigExpectsInstanceAlike()
         {
-            FileConfig fromFactory = Factory.GetFileCofig("a", "b");
+            FileConfig fromFactory = Factory.GetFileConfig("a", "b");
             Assert.IsInstanceOf<FileConfig>(fromFactory);
         }
         [Test]
         public void TestFlightLogExpectsInstanceAlike()
         {
-            FileConfig cfg = Factory.GetFileCofig("a", "b");
+            FileConfig cfg = Factory.GetFileConfig("a", "b");
             FlightLog log = Factory.GetFlightLog(cfg);
             Assert.IsInstanceOf<FlightLog>(log);
         }
@@ -41,7 +41,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
         [Test]
         public void TestAirTrafficTowerExpectsInstanceAlike()
         {
-            FileConfig cfg = Factory.GetFileCofig("a", "b");
+            FileConfig cfg = Factory.GetFileConfig("a", "b");
             FlightLog log = Factory.GetFlightLog(cfg);
             Subject ObserverList = Factory.GetSubject();
             List<CollisionTracker> tracker = new List<CollisionTracker>();

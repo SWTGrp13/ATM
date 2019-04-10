@@ -11,7 +11,7 @@ namespace TransponderReceiverLib
 {
     public static class Factory
     {
-        public static FileConfig GetFileCofig(string FileName,string FilePath)
+        public static FileConfig GetFileConfig(string FileName,string FilePath)
         {
              return new FileConfig(FileName,FilePath);
         }
