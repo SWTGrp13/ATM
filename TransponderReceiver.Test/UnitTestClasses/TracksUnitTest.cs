@@ -21,12 +21,12 @@ namespace TransponderReceiver.Test.UnitTestClasses
         private readonly string time = DateTime.Now.ToString("yyyyMMddHHmmssfff");
 
         #region TestParseData
-            
+
         [TestCase("XYZ987;25059;75654;4000;", "XYZ987")]
         [TestCase("KAT130;45256;85000;14000;", "KAT130")]
         public void TestParseTag(string fakeTrack, string expectedTag)
         {
-            ITrack testTrack= Factory.GetTrack(fakeTrack + time);
+            ITrack testTrack = Factory.GetTrack(fakeTrack + time);
             Assert.That(testTrack.Tag, Is.EqualTo(expectedTag));
         }
 
@@ -81,6 +81,16 @@ namespace TransponderReceiver.Test.UnitTestClasses
         }
 
         #endregion
+
+        [TestCase("XYZ987;25059;75654;4000;", "XYZ987")]
+        [TestCase("KAT130;45256;85000;14000;", "KAT130")]
+        public void TestIdentify(string fakeTrack, string expectedTag)
+        {
+            ITrack testTrack = Factory.GetTrack(fakeTrack + time);
+            Assert.That(testTrack.Identify(), Is.EqualTo(expectedTag));
+        }
+
+
 
         ////Variables
         //private Track uut;
