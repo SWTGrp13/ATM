@@ -53,12 +53,14 @@ namespace TransponderReceiverLib.Log
                         sw.WriteLine(message);
                         sw.Dispose();
                     }
-                   
+
                 }
             }
-            FormatConsole(level);
-            Console.WriteLine(message);
-            Console.ResetColor();
+            else { 
+                FormatConsole(level);
+                Console.WriteLine(message);
+                Console.ResetColor();
+            }
         }
     }
 }

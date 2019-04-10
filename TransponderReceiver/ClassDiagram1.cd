@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TransponderReceiverLib.Calculations.Calculate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculations\Calculations.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TransponderReceiverLib.Factory" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgFAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAABAEAAA=</HashCode>
+      <FileName>Factory\Factory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransponderReceiverLib.Log.FileConfig" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAABAAAA=</HashCode>
+      <FileName>Log\FlightLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransponderReceiverLib.Log.FlightLog" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAEAAAAEAAAA=</HashCode>
+      <FileName>Log\FlightLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransponderReceiverLib.Log.Log" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Log\Log.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransponderReceiverLib.Tower.Subject" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAASCAAAAAAAAAAA=</HashCode>
+      <FileName>Tower\Subject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TransponderReceiverLib.Tower.AirTrafficTower" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAgBAAAAAAQAAAAAAQAQAAAAgAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Tower\Tower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransponderReceiverLib.Tracks.Track" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAACAAAAgAAEAAAAAgAAEgCAAAABDAAAAAAEEQAA=</HashCode>
+      <FileName>Tracks\Track.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TransponderReceiverLib.Validation.Validator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Validator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Struct Name="TransponderReceiverLib.Tower.CollisionTracker" Collapsed="true">
+    <Position X="7.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tower\CollisionTracker.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="TransponderReceiverLib.Calculations.ICalculate" Collapsed="true">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculations\ICalculate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TransponderReceiverLib.Tower.ISubject" Collapsed="true">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAA=</HashCode>
+      <FileName>Tower\Subject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TransponderReceiverLib.Tracks.IObserver" Collapsed="true">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Tracks\Observer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TransponderReceiverLib.Tracks.ITrack" Collapsed="true">
+    <Position X="2" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAACAAAAgAAAAAAAAgAAEgCAAAABDAAAAAAAEQAA=</HashCode>
+      <FileName>Tracks\Track.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TransponderReceiverLib.Validation.IValidator" Collapsed="true">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\IValidator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="TransponderReceiverLib.Log.LogLevel">
+    <Position X="7.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Log\Log.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

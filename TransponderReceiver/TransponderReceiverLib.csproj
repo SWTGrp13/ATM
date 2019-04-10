@@ -49,6 +49,7 @@
     <Compile Include="Factory\Factory.cs" />
     <Compile Include="Log\FlightLog.cs" />
     <Compile Include="Log\Log.cs" />
+    <Compile Include="Tower\CollisionTracker.cs" />
     <Compile Include="Tracks\Observer.cs" />
     <Compile Include="Tracks\Track.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,6 +57,9 @@
     <Compile Include="Tower\Tower.cs" />
     <Compile Include="Validation\IValidator.cs" />
     <Compile Include="Validation\Validator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
