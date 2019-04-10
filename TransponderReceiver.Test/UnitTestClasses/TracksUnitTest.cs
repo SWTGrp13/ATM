@@ -8,49 +8,55 @@ using NSubstitute;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using TransponderReceiverLib.Tracks;
+using TransponderReceiverLib;
 
 namespace TransponderReceiver.Test.UnitTestClasses
 {
     [TestFixture]
     class TrackUnitTest
     {
-        private ITrack _fakeTrack;
+   //     private ITrack _fakeTrack;
         private readonly string time = DateTime.Now.ToString("yyyyMMddHHmmssfff");
 
-
-        public void Setuo()
+        public void Setup()
         {
-            _fakeTrack = Substitute.For<ITrack>();
-
+      //      _fakeTrack = Substitute.For<ITrack>();
         }
 
         #region TestParseData
-        [Test]
-        public void TestParseDataTag()
+        [TestCase ("ATR423;90045;12932;15987;", "ATR423")]
+        [TestCase("KAT130;90045;12932;14000;", "KAT130")]
+        public void TestParseDataTag(string _fakeTrack, string expectedTag)
         {
-            List<String> testTrack = new List<string>();
-            ITrack.Track("ATR423;39045;12932;14000;" + time);
-            testTrack.Add("BCD123;10005;85890;12000;" + time);
-            testTrack.Add("XYZ987;25059;75654;4000;" + time);
-
-            _fakeTrack.
-            Assert
+            ITrack testTrack = Factory.GetTrack(_fakeTrack + time);
+            Assert.That(testTrack.Tag, Is.EqualTo(expectedTag));
         }
-        [Test]
-        public void TestParseDataXPos()
+
+        [TestCase("ATR423;90045;12932;15987;", 90045)]
+        [TestCase("KAT130;70045;8562;14000;", 70045)]
+        public void TestParseDataXPos(string _fakeTrack, int expectedXPos)
         {
-
+            ITrack testTrack = Factory.GetTrack(_fakeTrack + time);
+            Assert.That(testTrack.XPos, Is.EqualTo(expectedXPos));
         }
-        [Test]
-        public void TestParseDataYPos()
+
+        [TestCase("ATR423;90045;12932;15987;", 12932)]
+        [TestCase("KAT130;70045;8562;14000;", 8562)]
+        public void TestParseDataYPos(string _fakeTrack, int expectedYPos)
         {
-
+            ITrack testTrack = Factory.GetTrack(_fakeTrack + time);
+            Assert.That(testTrack.YPos, Is.EqualTo(expectedYPos));
         }
+
+        [TestCase("ATR423;90045;12932;15987;", 15987)]
+        [TestCase("KAT130;70045;8562;14000;", 14000)]
         [Test]
-        public void TestParseDataAltitude()
+        public void TestParseDataAltitude(string _fakeTrack, int expectedAltitude)
         {
-
+            ITrack testTrack = Factory.GetTrack(_fakeTrack + time);
+            Assert.That(testTrack.Altitude, Is.EqualTo(expectedAltitude));
         }
+
         [Test]
         public void TestParseDataTimeStamp()
         {
