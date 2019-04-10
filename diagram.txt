@@ -1,23 +1,31 @@
+https://sequencediagram.org/
+
 participant TransponderReceiver
-participant Program
+participant AirTrafficTower
 participant Factory
+participant Validator
 participant FlightLog
-participant Tower
-participant Calculations
+actor Actor
+activate Actor
+activate AirTrafficTower
+activate TransponderReceiver
 
-TransponderReceiver-->(1)Program:onData()
-Program->Tower:handleData(Track)
-par if not exsists 
-Tower->Factory:create Track 
-Factory->Factory:Create Track
-Factory->Tower:Return Track
-thread if exsists
-Tower->Tower:Update Track data
+TransponderReceiver-->(1)AirTrafficTower:ReceiverOnTransponderDataReady()
+deactivate TransponderReceiver
+deactivate AirTrafficTower
+alt if not exsists 
+AirTrafficTower->Factory:GetTrack(TransponderData) 
+Factory-->AirTrafficTower:new Track()
+else if exsists
+AirTrafficTower->AirTrafficTower:Track.Update(TransponderData)
 end
-Tower->Calculations:Validate Track
-par if separation flag
-Tower->FlightLog:Loglevel.CRITICAL
-thread else 
-Tower->FlightLog:Loglevel.NORMAL
+AirTrafficTower->Validator:isInValidSpace(Track)
+Validator-->AirTrafficTower: bool isInValidSpace()
+AirTrafficTower->AirTrafficTower:Render()
+alt if separation flag
+AirTrafficTower->FlightLog:Loglevel.CRITICAL
 end
 
+AirTrafficTower->FlightLog:Loglevel.NORMAL
+FlightLog-->Actor: Display Tracks
+deactivate Actor
