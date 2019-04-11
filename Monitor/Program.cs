@@ -28,7 +28,5 @@ namespace Monitor
                 Thread.Sleep(1000);
 
         }
-       
-
     }
 }

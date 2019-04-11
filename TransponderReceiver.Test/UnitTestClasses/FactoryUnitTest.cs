@@ -16,6 +16,13 @@ namespace TransponderReceiver.Test.UnitTestClasses
     class FactoryUnitTest
     {
         [Test]
+        public void uutTestGetTrackerListAreInstanceOf()
+        {
+            List<CollisionTracker> tracker = Factory.GetTracker();
+            Assert.IsInstanceOf<List<CollisionTracker>>(tracker);
+        }
+
+        [Test]
         public void TestFileConfigExpectsInstanceAlike()
         {
             FileConfig fromFactory = Factory.GetFileConfig("a", "b");

@@ -57,13 +57,10 @@ namespace TransponderReceiver.Test.UnitTestClasses
 
             // assign dummy event
             _fakeTransponderReceiver.TransponderDataReady += ReceiverOnTransponderDataReady;
-
             // Act: Trigger the fake object to execute event invocation
             _fakeTransponderReceiver.TransponderDataReady
                 += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
-                
             Assert.AreEqual(2, _uut.GetTracks().getInstances().Count);
-
         }
 
         [Test]
