@@ -190,6 +190,28 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.AreEqual("EXF232", collisionTracker.CollisionList);
             Assert.AreEqual("SET", collisionTracker.Tag);
         }
+        [Test]
+        public void uutTestCollitionValidate()
+        {
+            String time = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            // Setup test data
+
+            List<string> testData = new List<string>();
+            testData.Add("XYZ987;25059;75654;4000;" + time);
+            testData.Add("ATR423;25059;75654;14000;" + time);
+            testData.Add("ATR423;25059;75654;14000;" + time);
+
+            // assign dummy event
+            _fakeTransponderReceiver.TransponderDataReady += ReceiverOnTransponderDataReady;
+
+            // Act: Trigger the fake object to execute event invocation
+            _fakeTransponderReceiver.TransponderDataReady
+                += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
+            _uut.CollisionValidate();
+
+            Assert.AreEqual(2, _uut.GetTracks().getInstances().Count);
+
+        }
 
     }
 }
