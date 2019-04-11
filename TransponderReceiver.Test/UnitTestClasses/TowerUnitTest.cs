@@ -197,10 +197,11 @@ namespace TransponderReceiver.Test.UnitTestClasses
             // Setup test data
 
             List<string> testData = new List<string>();
-            testData.Add("XYZ987;25059;75654;4000;" + time);
+            testData.Add("XYZ111;40059;55654;7000;" + time);
             testData.Add("ATR423;25059;75654;14000;" + time);
-            testData.Add("ATR423;25059;75654;14000;" + time);
+            testData.Add("XYZ111;25059;75654;14000;" + time);
 
+            
             // assign dummy event
             _fakeTransponderReceiver.TransponderDataReady += ReceiverOnTransponderDataReady;
 
@@ -209,7 +210,7 @@ namespace TransponderReceiver.Test.UnitTestClasses
                 += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
             _uut.CollisionValidate();
 
-            Assert.AreEqual(2, _uut.GetTracks().getInstances().Count);
+            Assert.AreEqual(2, tracker.Count);
 
         }
 
