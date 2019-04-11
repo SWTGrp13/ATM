@@ -19,10 +19,8 @@ namespace TransponderReceiverLib.Tracks
         int Altitude { get; set; }
         double Velocity { get; set; }
         double Degrees { get; set; }
-        bool ConditionCheck { get; set; }
         DateTime TimeStamp { get; set; }
         DateTime OldTimeStamp { get; set; }
-        //bool isInValidSpace();
     }
 
     public class Track : ITrack
@@ -35,7 +33,6 @@ namespace TransponderReceiverLib.Tracks
         public int Altitude { get; set; }
         public double Velocity { get; set; }
         public double Degrees { get; set; }
-        public bool ConditionCheck { get; set; }
         public DateTime TimeStamp { get; set; }
         public DateTime OldTimeStamp { get; set; }
 

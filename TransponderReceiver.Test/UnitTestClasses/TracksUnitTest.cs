@@ -11,7 +11,6 @@ using TransponderReceiverLib.Tracks;
 using TransponderReceiverLib;
 using TransponderReceiverLib.Calculations;
 using TransponderReceiverLib.Validation;
-using System.Collections.Generic;
 
 namespace TransponderReceiver.Test.UnitTestClasses
 {
@@ -129,7 +128,6 @@ namespace TransponderReceiver.Test.UnitTestClasses
         }
         #endregion
 
-
         //// SetUp 
         //[SetUp]
         //public void SetUp()
@@ -140,8 +138,6 @@ namespace TransponderReceiver.Test.UnitTestClasses
         //    OritignalYpos = uut.YPos;
         //    OriginalAltitude = uut.Altitude;
         //}
-
-
 
     }
 }
