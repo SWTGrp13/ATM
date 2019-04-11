@@ -153,5 +153,43 @@ namespace TransponderReceiver.Test.UnitTestClasses
 
         }
 
+        [Test]
+        public void uutTestCollitionGet()
+        {
+
+            List<CollisionTracker> tracker = new List<CollisionTracker>();
+
+            var elm = new CollisionTracker()
+            {
+                Tag = "UUT",
+                CollisionList = String.Empty
+            };
+
+            tracker.Add(elm);
+
+            Assert.Contains(elm,tracker);
+            
+        }
+        [Test]
+        public void uutTestCollitionSet()
+        {
+
+            List<CollisionTracker> tracker = new List<CollisionTracker>();
+
+            var elm = new CollisionTracker()
+            {
+                Tag = "UUT",
+                CollisionList = String.Empty
+            };
+
+            tracker.Add(elm);
+
+            var collisionTracker = tracker.First();
+            collisionTracker.CollisionList = "EXF232";
+            collisionTracker.Tag = "SET";
+            Assert.AreEqual("EXF232", collisionTracker.CollisionList);
+            Assert.AreEqual("SET", collisionTracker.Tag);
+        }
+
     }
 }
