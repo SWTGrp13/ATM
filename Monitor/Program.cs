@@ -14,41 +14,21 @@ namespace Monitor
     class Program
     {
         static ITransponderReceiver receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+        private static MonitorSystem Sys_;
 
-        private static AirTrafficTower TrafficMonitor;
-        private static FileConfig cfg;
-        private static FlightLog Log;
-        private static Subject TrackList;
-        private static List<CollisionTracker> tracker;
         static void Main(string[] args)
         {
 
-            tracker = Factory.GetTracker();
-
-            cfg = Factory.GetFileConfig("AirTrafficMonitorLog.txt", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-
-            Log = Factory.GetFlightLog(cfg);
-
-            TrackList = Factory.GetSubject();
-
-            TrafficMonitor = new AirTrafficTower(Log, TrackList, tracker,true);
-
-            receiver.TransponderDataReady += ReceiverOnTransponderDataReady;
+            Sys_ = new MonitorSystem();
+         
+            receiver.TransponderDataReady += Sys_.ReceiverOnTransponderDataReady;
 
             // Let the real TDR execute in the background
             while (true)
                 Thread.Sleep(1000);
 
         }
-        static void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
-        {
-            Console.Clear();
-            foreach (var data in e.TransponderData)
-            {
-                TrafficMonitor.Add(data);
-            }
-            TrafficMonitor.CollisionValidate();
-        }
+       
 
     }
 }
