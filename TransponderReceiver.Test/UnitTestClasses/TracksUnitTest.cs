@@ -64,21 +64,21 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That(testTrack.TimeStamp, Is.EqualTo(expectedTimeParsed));
         }
 
-        [TestCase("XYZ987;25059;75654;4000;")]
-        [TestCase("KAT130;45256;8000;14000;")]
-        public void TestParseValidSpaceTrue(string fakeTrack)
-        {
-            ITrack testTrack = Factory.GetTrack(fakeTrack + time);
-            Assert.That(testTrack.isInValidSpace, Is.True);
-        }
-        [TestCase("XYZ987;85059;75654;4000;")]
-        [TestCase("KAT130;45256;85000;14000;")]
-        [TestCase("KAT130;45256;8000;40000;")]
-        public void TestParseValidSpaceFalse(string fakeTrack)
-        {
-            ITrack testTrack = Factory.GetTrack(fakeTrack + time);
-            Assert.That(testTrack.isInValidSpace, Is.False);
-        }
+        //[TestCase("XYZ987;25059;75654;4000;")]
+        //[TestCase("KAT130;45256;8000;14000;")]
+        //public void TestParseValidSpaceTrue(string fakeTrack)
+        //{
+        //    ITrack testTrack = Factory.GetTrack(fakeTrack + time);
+        //    Assert.That(testTrack.isInValidSpace, Is.True);
+        //}
+        //[TestCase("XYZ987;85059;75654;4000;")]
+        //[TestCase("KAT130;45256;85000;14000;")]
+        //[TestCase("KAT130;45256;8000;40000;")]
+        //public void TestParseValidSpaceFalse(string fakeTrack)
+        //{
+        //    ITrack testTrack = Factory.GetTrack(fakeTrack + time);
+        //    Assert.That(testTrack.isInValidSpace, Is.False);
+        //}
 
         #endregion
 
@@ -90,6 +90,29 @@ namespace TransponderReceiver.Test.UnitTestClasses
             Assert.That(testTrack.Identify(), Is.EqualTo(expectedTag));
         }
 
+        [TestCase("XYZ987;25059;75654;4000;20161006213456789", "20161006213456789")]
+        [TestCase("KAT130;45256;85000;14000;20151006213456789", "20151006213456789")]
+        public void TestUpdateOldXPos(string fakeTrack, string expectedTag)
+        {
+            ITrack testTrack = Factory.GetTrack(fakeTrack + time);
+            Assert.That(testTrack.Identify(), Is.EqualTo(expectedTag));
+        }
+
+        [TestCase("XYZ987;25059;75654;4000;20161006213456789", "20161006213456789")]
+        [TestCase("KAT130;45256;85000;14000;20151006213456789", "20151006213456789")]
+        public void TestUpdateOldYPos(string fakeTrack, string expectedTag)
+        {
+            ITrack testTrack = Factory.GetTrack(fakeTrack + time);
+            Assert.That(testTrack.Identify(), Is.EqualTo(expectedTag));
+        }
+
+        [TestCase("XYZ987;25059;75654;4000;20161006213456789", "20161006213456789")]
+        [TestCase("KAT130;45256;85000;14000;20151006213456789", "20151006213456789")]
+        public void TestUpdateOldTime(string fakeTrack, string expectedTag)
+        {
+            ITrack testTrack = Factory.GetTrack(fakeTrack + time);
+            Assert.That(testTrack.Identify(), Is.EqualTo(expectedTag));
+        }
 
 
         ////Variables

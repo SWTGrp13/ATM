@@ -22,7 +22,7 @@ namespace TransponderReceiverLib.Tracks
         bool ConditionCheck { get; set; }
         DateTime TimeStamp { get; set; }
         DateTime OldTimeStamp { get; set; }
-        bool isInValidSpace();
+        //bool isInValidSpace();
     }
 
     public class Track : ITrack
@@ -76,27 +76,27 @@ namespace TransponderReceiverLib.Tracks
             return Tag;
         }
 
-        public bool isInValidSpace()
-        {
-            if (((int)XPos < 0) || ((int)XPos > 80000))
-            {
-                return false;
-            }
-            if (((int)YPos < 0) || ((int)YPos > 80000))
-            {
-                return false;
-            }
-            if (((int)Altitude <= 500) || ((int)Altitude >= 20000))
-            {
-                return false;
-            }
-            if ((DateTime.Now.Subtract(TimeStamp).TotalSeconds) >= 2)
-            {
-                return false;
-            }
+        //public bool isInValidSpace()
+        //{
+        //    if (((int)XPos < 0) || ((int)XPos > 80000))
+        //    {
+        //        return false;
+        //    }
+        //    if (((int)YPos < 0) || ((int)YPos > 80000))
+        //    {
+        //        return false;
+        //    }
+        //    if (((int)Altitude <= 500) || ((int)Altitude >= 20000))
+        //    {
+        //        return false;
+        //    }
+        //    if ((DateTime.Now.Subtract(TimeStamp).TotalSeconds) >= 2)
+        //    {
+        //        return false;
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
     }
 
 }
